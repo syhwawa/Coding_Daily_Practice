@@ -6,4 +6,26 @@ a = [3, 4, 6, 10, 11, 18]
 b = [1, 5, 7, 12, 13, 19, 21]
 
 #Answer:
+a = [3, 4, 6, 10, 11, 18]
+b = [1, 5, 7, 12, 13, 19, 21]
+c = []
 
+a.extend(b)
+c = sorted(a)
+print(c)
+
+#Q2:
+Get word frequency - initializing dictionary
+We'll see two ways of initializing dictionary by solving word frequency problem.
+
+
+ss = """I figured it out
+I figured it out from black and white
+Seconds and hours
+Maybe they had to take some time"""
+
+words = ss.split()
+d = {}.fromkeys(words,0)
+for w in words:
+    d[w] += 1
+print d
