@@ -43,5 +43,3 @@ def get_bonus(i):
 
 print("profits:", i)
 print("bonus:", get_bonus(i/10000) * 10000)
-
-Question 3:
