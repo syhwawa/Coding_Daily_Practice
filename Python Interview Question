@@ -100,3 +100,63 @@ print(unique_names(names1, names2))
 ['Olivia', 'Emma', 'Sophia', 'Ava']
 
 ---------------------------------------------------------------------------------------
+#Q6:
+Initializing dictionary with list - II
+A little bit simpler problem. We have a list of numbers:
+
+L = [1,2,4,8,16,32,64,128,256,512,1024,32768,65536,4294967296]
+We want to make a dictionary with the number of digits as the key and list of numbers the value:
+{1: [1, 2, 4, 8], 2: [16, 32, 64], 3: [128, 256, 512], 4: [1024], 5: [32768, 65536], 10: [4294967296]})
+
+#Answer:
+
+from collections import defaultdict
+d = defaultdict(list)
+for i in L:
+    d[len(str(i))].append(i)
+print(d)
+print {k:v for k,v in d.items()}
+
+---------------------------------------------------------------------------------------
+#Q7:
+map, filter, and reduce
+Using map, filter, reduce, write a code that create a list of (n)**2 for range(10) for even integers:
+
+#Answer:
+l = [x for x in range(10) if x % 2 == 0]
+print(l)
+
+m = filter(lambda x:x % 2 == 0, [x for x in range(10)] )
+# m = list( filter(lambda x:x % 2 == 0, [x for x in range(10)] ) ) # python3
+print(m)
+
+o = map(lambda x: x**2, m)
+# o = list( map(lambda x: x**2, m) ) # python3
+print(o)
+
+
+p = reduce(lambda x,y:x+y, o)
+# import functools . # python3
+# p = functools.reduce(lambda x,y:x+y, o) # python3
+print(p)
+---------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
