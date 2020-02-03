@@ -234,7 +234,7 @@ takes a list of tuples (key, value) and returns a
 dictionary with these keys and values
 """
 
-==============================
+============================================================
 
 def make_dict(key_value_list):
     """
@@ -258,4 +258,52 @@ print(make_dict([("Joe", 1), ("Scott", 2), ("John", 4)]))
 #{0: 1}
 #{'John': 4, 'Joe': 1, 'Scott': 2}
 
+"""
+Template for part 1
+Using substitution ciphers to encrypt and decrypt plain text
+"""
+
+============================================================
+A simple substitution cipher is an encryption scheme where each letter in an alphabet to replaced by a different letter in the same alphabet with the restriction that each letter's replacement is unique. The template for this question contains an example of a substitution cipher represented a dictionary \color{red}{\verb|CIPHER_DICTIONARY|}CIPHER_DICTIONARY. Your task is to write a function \color{red}{\verb|encrypt(phrase, cipher_dict)|}encrypt(phrase,cipher_dict) that takes a string \color{red}{\verb|phrase|}phrase and a dictionary \color{red}{\verb|cipher_dict|}cipher_dict and returns the results of replacing each character in \color{red}{\verb|phrase|}phrase by its corresponding value in \color{red}{\verb|cipher_dict|}cipher_dict. Encrypt template --- Encrypt solution
+"""
+Solution for parts 1-2, Template for part 3
+Using substitution ciphers to encrypt and decrypt plain text
+"""
+
+# Part 1 - Use a dictionary that represents a substition cipher to 
+# encrypt a phrase
+
+# Example of a cipher dictionary 26 lower case letters plus the blank
+CIPHER_DICT = {'e': 'u', 'b': 's', 'k': 'x', 'u': 'q', 'y': 'c', 'm': 'w', 'o': 'y', 'g': 'f', 'a': 'm', 'x': 'j', 'l': 'n', 's': 'o', 'r': 'g', 'i': 'i', 'j': 'z', 'c': 'k', 'f': 'p', ' ': 'b', 'q': 'r', 'z': 'e', 'p': 'v', 'v': 'l', 'h': 'h', 'd': 'd', 'n': 'a', 't': ' ', 'w': 't'}
+
+def encrypt(phrase, cipher_dict):
+    """
+    Take a string phrase (lower case plus blank) 
+    and encypt it using the dictionary cipher_dict
+    """
+    answer = ''
+    for letter in phrase:
+        answer += CIPHER_DICT[letter]
+    return answer
+        
+
+# Tests
+print("Output for part 1")
+print(encrypt("pig", CIPHER_DICT))
+print(encrypt("hello world", CIPHER_DICT))
+print()
+
+# Output for part 1
+#vif
+#hunnybtygnd
+
+
+
+
+
+
+Challenge: Write a function \color{red}{\verb|make_decipher_dict(cipher_dict)|}make_decipher_dict(cipher_dict) that takes a cipher dictionary \color{red}{\verb|cipher_dict|}cipher_dict and returns a new dictionary \color{red}{\verb|decipher_dict|}decipher_dict with the property that applying \color{red}{\verb|decipher_dict|}decipher_dict to a phrase encrypted using \color{red}{\verb|cipher_dict|}cipher_dict returns the original phrase. Make decipher template --- Make decipher solution
+Challenge: Write a function \color{red}{\verb|make_cipher_dict(alphabet)|}make_cipher_dict(alphabet) that takes a string of unique characters and returns a randomly-generated cipher dictionary for the characters in \color{red}{\verb|alphabet|}alphabet . You should use the \color{red}{\verb|shuffle()|}shuffle() method in the \color{red}{\verb|random|}random module to ensure that your returned cipher dictionary is random. Make cipher template --- Make cipher solution
+
+值可以取任何数据类型，但键必须是不可变的，如字符串，数字或元组
 
