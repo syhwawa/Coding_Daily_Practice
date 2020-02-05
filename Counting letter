@@ -25,4 +25,17 @@ monty_quote = "listen strange women lying in ponds distributing swords is no bas
 
 monty_words = monty_quote.split(" ")
 
-print (count_letters(monty_words))
+print (count_letters(monty_words
+
+------------------------------------------------------------------
+#Word count
+word_count('I Love you')
+def word_count(word):
+    my_word = word.lower().split()
+    my_dict = {}
+    for i in my_word:
+        if i in my_dict:
+            my_dict[i] += 1
+        else:
+            my_dict[i] = 1
+    print(my_dict)
