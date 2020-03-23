@@ -18,7 +18,8 @@ Product of digits = 4 * 4 * 2 * 1 = 32
 Sum of digits = 4 + 4 + 2 + 1 = 11 
 Result = 32 - 11 = 21
 """
-
+---------------------------------------------------------------------------------------------        
+#solution 1
 class Solution:
     def subtractProductAndSum(self, n: int) -> int:
         digits = [int(i) for i in str(n)]
@@ -26,6 +27,25 @@ class Solution:
         c = 0
         for i in digits:
             b = b * i
+            c = c + i
+        return b-c
+            
+---------------------------------------------------------------------------------------------        
+#solution 2
+def subtractProductAndSum(n):
+	product = 1
+	sumed = 0
+	while n > 0:
+		product = product * (n % 10)
+		sumed += (n % 10)
+		n = n // 10
+
+	res = product - sumed
+	return res
+
+n = 234
+print(subtractProductAndSum(n))
+
             c = c + i
         return b-c
         
