@@ -45,7 +45,3 @@ def subtractProductAndSum(n):
 
 n = 234
 print(subtractProductAndSum(n))
-
-            c = c + i
-        return b-c
-        
