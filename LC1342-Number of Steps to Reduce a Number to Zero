@@ -35,18 +35,3 @@ class Solution:
             i = i + 1
             
         return i
----------------------------------------------------------------------------------------------        
-#solution 2
-def subtractProductAndSum(n):
-	product = 1
-	sumed = 0
-	while n > 0:
-		product = product * (n % 10)
-		sumed += (n % 10)
-		n = n // 10
-
-	res = product - sumed
-	return res
-
-n = 234
-print(subtractProductAndSum(n))
