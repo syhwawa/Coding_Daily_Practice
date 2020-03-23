@@ -22,9 +22,8 @@ Step 2) 4 is even; divide by 2 and obtain 2.
 Step 3) 2 is even; divide by 2 and obtain 1. 
 Step 4) 1 is odd; subtract 1 and obtain 0.
 
-
-
-
+--------------------------------------------------------------------------------------------- 
+#solution 1
 class Solution:
     def numberOfSteps (self, num: int) -> int:
         i = 0
@@ -35,5 +34,19 @@ class Solution:
                 num = num-1
             i = i + 1
             
-        return i    
-            
+        return i
+---------------------------------------------------------------------------------------------        
+#solution 2
+def subtractProductAndSum(n):
+	product = 1
+	sumed = 0
+	while n > 0:
+		product = product * (n % 10)
+		sumed += (n % 10)
+		n = n // 10
+
+	res = product - sumed
+	return res
+
+n = 234
+print(subtractProductAndSum(n))
