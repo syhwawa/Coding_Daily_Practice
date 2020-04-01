@@ -1,0 +1,56 @@
+#Questions: counting most_common letter in a sentences
+-------------------------------------------------
+def count_letters(word_list):
+    """ See question description """
+    
+    ALPHABET = "abcdefghijklmnopqrstuvwxyz"
+
+    letter_count = {}
+    for letter in ALPHABET:
+        letter_count[letter] = 0
+        
+    for word in word_list:
+      for char in word:
+        letter_count[char] += 1
+    
+    max_value = 0
+    max_char = 'a'
+    
+    for k in letter_count.keys():
+      if (letter_count[k] > max_value):
+        max_value = letter_count[k]
+        max_char = k
+        
+    return max_char, max_value
+    
+monty_quote = "listen strange women lying in ponds distributing swords is no basis for a system of government supreme executive power derives from a mandate from the masses not from some farcical aquatic ceremony"
+
+monty_words = monty_quote.split(" ")
+
+print (count_letters(monty_words)
+
+------------------------------------------------------------------
+#Questions: counting words in a sentence shown in dic
+def word_count(str):
+    counts = dict()
+    words = str.split()
+
+    for word in words:
+        if word in counts:
+            counts[word] += 1
+        else:
+            counts[word] = 1
+
+    return counts
+
+print( word_count('the quick brown fox jumps over the lazy dog.'))
+word_count('I Love you')
+def word_count(word):
+    my_word = word.lower().split()
+    my_dict = {}
+    for i in my_word:
+        if i in my_dict:
+            my_dict[i] += 1
+        else:
+            my_dict[i] = 1
+    print(my_dict)
