@@ -13,3 +13,59 @@ return its level order traversal as:
   [9,20],
   [3]
 ]
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:
+        if root is None: 
+            return []
+        
+        result, current = [], [root]
+        
+        while current:
+            next_level, vals = [], []
+            for node in current:
+                vals.append(node.val)
+                if node.left:
+                    next_level.append(node.left)
+                if node.right:
+                    next_level.append(node.right)
+            current = next_level
+            result.append(vals)
+            
+        return result [:: -1]
+        
+        
+Solution 2: DFS      
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:
+        res = []
+        self.dfs(root, 0, res)
+        return res [:: -1]
+    
+    def dfs(self, node, level, res):
+        if not node:
+            return
+        
+        if level >= len(res):
+            res.append([])
+        res[level].append(node.val)
+        self.dfs(node.left, level+1, res)
+        self.dfs(node.right, level+1, res)
+
+                    
+        
