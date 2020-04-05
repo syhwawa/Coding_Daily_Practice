@@ -1,5 +1,3 @@
-# syh
-## Practice coding
-## coding questions from Leetcode and HackerRank
 ## LT:leetcode
 ## HR:HanckerRank
+## Gradute School: Data Science with Python (Pandas)
