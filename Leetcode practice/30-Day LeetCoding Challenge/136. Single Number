@@ -1,0 +1,37 @@
+Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+
+Note:
+
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+Example 1:
+
+Input: [2,2,1]
+Output: 1
+Example 2:
+
+Input: [4,1,2,1,2]
+Output: 4
+
+位运算-异或(XOR)
+首先我们要知道什么是XOR，也就是异或, OR大家都懂吧
+
+>>> 5 or 0
+5
+那xor (^)是啥呢？之前我都没使用过
+
+>>> 5 ^ 0
+5
+也就是0和任何数异或的结果是这个任何数
+
+>>> 3 ^ 3
+0
+任何相同的数异或的结果是0
+
+又由于异或满足交换结合律，整合重复的数都有2个，所以可以抵消掉
+class Solution(object):
+    def singleNumber(self, nums):
+        a = 0
+        for i in nums:
+            a ^= i
+        return a
