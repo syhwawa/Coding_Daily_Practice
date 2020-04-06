@@ -34,7 +34,7 @@ class Solution:
         return res
         
 # iteratively
-def preorderTraversal(self, root):
+def preorderTraversal(self, root): 
     stack, res = [root], []
     while stack:
         node = stack.pop()
