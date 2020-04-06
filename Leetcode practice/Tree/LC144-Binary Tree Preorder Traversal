@@ -44,3 +44,4 @@ def preorderTraversal(self, root):
             stack.append(node.right)
             stack.append(node.left)
     return res 
+ 
