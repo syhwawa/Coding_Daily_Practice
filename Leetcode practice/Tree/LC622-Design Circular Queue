@@ -97,7 +97,7 @@ class MyCircularQueue:
             self.rear -= 1
             return True
         
-
+ 
     def Front(self) -> int:
         """
         Get the front item from the queue.
