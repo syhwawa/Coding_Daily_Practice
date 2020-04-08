@@ -14,7 +14,7 @@ Explanation:
 62 + 82 = 100
 12 + 02 + 02 = 1
 
-Solution:
+Solution: 
 class Solution:
     def isHappy(self, n: int) -> bool:
         a = set()
