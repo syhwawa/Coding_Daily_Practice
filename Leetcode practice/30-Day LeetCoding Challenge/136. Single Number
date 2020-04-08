@@ -34,4 +34,4 @@ class Solution(object):
         a = 0
         for i in nums:
             a ^= i
-        return a
+        return a 
