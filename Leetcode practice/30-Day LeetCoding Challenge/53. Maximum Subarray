@@ -24,3 +24,4 @@ class Solution:
             global_max = max(local_max, global_max)
         
         return global_max
+ 
