@@ -1,0 +1,34 @@
+Given an array of strings, group anagrams together.
+
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+Note:
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        dic = {}
+        if len(strs) < 1:
+            return strs
+        
+        else:
+            for i in range(len(strs)):
+                current = strs[i]
+                currentsort = "".join(sorted(current))
+                if currentsort in dic:
+                    dic[currentsort].append(current)
+                else:
+                    dic[currentsort] = [current]
+            
+        return dic.values()
+        
