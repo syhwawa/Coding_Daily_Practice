@@ -24,4 +24,4 @@ class Solution:
             self.res=max(self.res,l+r)#存储当前节点与之前遍历节点的最长路径
             return max(l,r)+1 #返回当前子树的最长深度
         dfs(root)
-        return self.res
+        return self.res 
