@@ -1,0 +1,51 @@
+238. Product of Array Except Self
+Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+
+Example:
+
+Input:  [1,2,3,4]
+Output: [24,12,8,6]
+Constraint: It's guaranteed that the product of the elements of any prefix or suffix of the array (including the whole array) fits in a 32 bit integer.
+
+Note: Please solve it without division and in O(n).
+
+Follow up:
+Could you solve it with constant space complexity? (The output array does not count as extra space for the purpose of space complexity analysis.)
+
+使用左边乘积和右边乘积进行计算。
+
+左积和右积
+初始化数组长度nn。初始化res=[0,0,...,0]res=[0,0,...,0]为1*n1∗n的数组。初试化乘积k=1k=1
+
+从左向右遍历，遍历区间[0,n)[0,n)：
+
+resres每个位置保存它左侧所有元素的乘积。即res[i]=k,k*=nums[i]res[i]=k,k∗=nums[i]
+重置乘积k=1k=1，用来保存元素右边的乘积和
+
+从右向左遍历，遍历区间(n,0](n,0]：
+
+res[i]*=kres[i]∗=k，表示将当前位置的左积乘以右积。
+更新右积k*=nums[i]k∗=nums[i]
+返回resres
+
+
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        res = [0] * n
+        
+        #left to right
+        k = 1
+        for i in range(n):
+            res[i] = k
+            k  = k * nums[i]
+            
+        #left to right
+        k = 1
+        for i in range(n-1, -1, -1):
+            res[i] = k* res[i]
+            k = k * nums[i]
+            
+            
+        return res
+        
