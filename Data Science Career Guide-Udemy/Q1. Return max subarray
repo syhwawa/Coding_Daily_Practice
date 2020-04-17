@@ -1,0 +1,12 @@
+def max_subarray(nums):
+    if len(nums) == 0:
+        return 0
+    local_max = 0
+    global_max = 0
+    i = 0
+    while i < len(nums):
+        local_max = max(nums[i]+ local_max, nums[i])
+        global_max = max(local_max, global_max)
+        i += 1
+        
+    return global_max
