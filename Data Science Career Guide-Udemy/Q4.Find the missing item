@@ -1,0 +1,6 @@
+Find the missing item in two lists.
+
+def finder(arr1, arr2):
+    return sum(arr1) - sum(arr2)
+
+finder([1,2,3],[1,2])
