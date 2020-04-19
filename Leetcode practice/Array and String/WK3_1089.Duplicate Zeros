@@ -23,7 +23,7 @@ Note:
 1 <= arr.length <= 10000
 0 <= arr[i] <= 9
 
-Solution：
+Solution1：
 
 class Solution:
     def duplicateZeros(self, arr: List[int]) -> None:
@@ -38,4 +38,28 @@ class Solution:
                 i +=2
             else:
                 i +=1
+
+Solution 2:
+class Solution:
+    def duplicateZeros(self, arr: List[int]) -> None:
+        """
+        Do not return anything, modify arr in-place instead.
+        """
+        pos, new = 0, arr.copy()
+        
+        for num in new:
+            if num == 0:
+                arr[pos] = 0
+                if pos < len(arr)-1:
+                    arr[pos+1] = 0
+                pos += 2
+            else:
+                arr[pos] = num
+                pos +=1
+            
+            if pos >= len(arr):
+                break
+                 复制arr到new，设置指针pos=0，然后循环new，遇到值为0时pos+2，不为0时pos+1，直到pos>=len(arr);
+要注意的是边界问题，当num =0时arr[pos+1] = 0可能会下标越界，所以这个时候要另外判断。
+举例栗子：arr = [1,0,2,3,0,4,0,5,1]，最后结果应该是[1,0,0,2,3,0,0,4,0]，原数组中的第三个0就不需要添加了
 
