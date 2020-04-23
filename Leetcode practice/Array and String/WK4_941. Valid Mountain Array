@@ -1,0 +1,47 @@
+Given an array A of integers, return true if and only if it is a valid mountain array.
+
+Recall that A is a mountain array if and only if:
+
+A.length >= 3
+There exists some i with 0 < i < A.length - 1 such that:
+A[0] < A[1] < ... A[i-1] < A[i]
+A[i] > A[i+1] > ... > A[A.length - 1]
+
+
+ 
+Example 1:
+
+Input: [2,1]
+Output: false
+Example 2:
+
+Input: [3,5,5]
+Output: false
+Example 3:
+
+Input: [0,3,2,1]
+Output: true
+ 
+
+Note:
+
+0 <= A.length <= 10000
+0 <= A[i] <= 10000 
+ 
+Solution:
+我们从数组的最左侧开始扫描，直到找到第一个不满足 A[i] < A[i + 1] 的 i，那么 i 就是这个数组的最高点。如果 i = 0 或者不存在这样的 i（即整个数组都是单调递增的），那么就返回 false。否则从 i 开始继续扫描，判断接下来的的位置 j 是否都满足 A[j] > A[j + 1]，若都满足就返回 true，否则返回 false。
+
+class Solution:
+    def validMountainArray(self, A):
+        i = 0
+        while i +1< len(A) and A[i] < A[i+1]:
+            i += 1
+            
+        if i == 0 or i== len(A)-1: 
+            return False
+        
+        while i + 1 < len(A) and A[i] > A[i+1]:
+            i += 1
+        
+        return i == len(A)-1
+
