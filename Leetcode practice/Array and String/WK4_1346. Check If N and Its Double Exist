@@ -1,0 +1,47 @@
+Given an array arr of integers, check if there exists two integers N and M such that N is the double of M ( i.e. N = 2 * M).
+
+More formally check if there exists two indices i and j such that :
+
+i != j
+0 <= i, j < arr.length
+arr[i] == 2 * arr[j]
+ 
+
+Example 1:
+
+Input: arr = [10,2,5,3]
+Output: true
+Explanation: N = 10 is the double of M = 5,that is, 10 = 2 * 5.
+Example 2:
+
+Input: arr = [7,1,14,11]
+Output: true
+Explanation: N = 14 is the double of M = 7,that is, 14 = 2 * 7.
+Example 3:
+
+Input: arr = [3,1,7,11]
+Output: false
+Explanation: In this case does not exist N and M, such that N = 2 * M.
+ 
+
+Constraints:
+
+2 <= arr.length <= 500
+-10^3 <= arr[i] <= 10^3
+
+
+Solution:
+我们从数组的最左侧开始扫描，直到找到第一个不满足 A[i] < A[i + 1] 的 i，那么 i 就是这个数组的最高点。
+如果 i = 0 或者不存在这样的 i（即整个数组都是单调递增的），那么就返回 false。否则从 i 开始继续扫描，判断接下来的的位置 j 
+是否都满足 A[j] > A[j + 1]，若都满足就返回 true，否则返回 false。
+class Solution:
+    def checkIfExist(self, arr: List[int]) -> bool:
+        import collections
+        s = collections.Counter(arr)
+        for n in s:
+            if n == 0:
+                if s[n] > 1: return True
+            elif n*2 in s:
+                return True
+        return False
+
