@@ -1,0 +1,37 @@
+Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.
+
+Example 1:
+Input:nums = [1,1,1], k = 2
+Output: 2
+Note:
+The length of the array is in range [1, 20,000].
+The range of numbers in the array is [-1000, 1000] and the range of the integer k is [-1e7, 1e7].
+
+借助哈希表保存累加和sumsum及出现的次数。若累加和sum-ksum−k在哈希表中存在，则说明存在连续序列使得和为kk。则之前的累加和中，sum-ksum−k出现的次数即为有多少种子序列使得累加和为sum-ksum−k。
+
+哈希
+初始化哈希表hash=\{0:1\}hash={0:1}，表示累加和为00，出现了11次。初始化累加和sum=0sum=0。初始化结果count=0count=0。
+
+遍历数组：
+
+更新累加和sum+=nums[i]sum+=nums[i]
+若sum-ksum−k存在于hashhash中，说明存在连续序列使得和为kk。则令count+=hash[sum-k]count+=hash[sum−k]，表示sum-ksum−k出现几次，就存在几种子序列使得和为kk。
+若sumsum存在于hashhash中，将其出现次数加一。若不存在，将其加入hashhash
+返回countcount
+
+
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        sum1 = 0
+        hash = {0:1}
+        count = 0
+        for i in range(len(nums)):
+            sum1 += nums[i]
+            if sum1 - k in hash:
+                count += hash[sum1-k]
+            if sum1 in hash:
+                hash[sum1] += 1
+            else:
+                hash[sum1] = 1
+        return count
+        
