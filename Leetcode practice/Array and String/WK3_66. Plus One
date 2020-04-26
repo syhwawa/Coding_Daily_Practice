@@ -26,7 +26,7 @@ class Solution:
                 digits[i] += 1
                 return digits
         
-        digits[0] = 1
+        digits[0] = 1 # if input = 999, output= 000 =>1000
         digits.append(0)
         return digits
                          
