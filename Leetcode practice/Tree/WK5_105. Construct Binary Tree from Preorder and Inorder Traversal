@@ -1,0 +1,68 @@
+Given preorder and inorder traversal of a tree, construct the binary tree.
+
+Note:
+You may assume that duplicates do not exist in the tree.
+
+For example, given
+
+preorder = [3,9,20,15,7]
+inorder = [9,3,15,20,7]
+Return the following binary tree:
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+   
+Solution:
+
+首先回忆下，用前序遍历和中序遍历一颗二叉树：
+
+	      1
+	    /   \
+	   2     3
+	  / \   / \ 
+	 4   5 6   7
+前序遍历的结果是:[1,2,4,5,3,6,7]
+中序遍历的结果是:[4,2,5,1,6,3,7]
+前序遍历的特点是，根节点始终出现在数组的第一位，而中序遍历中根节点出现在数组的中间位置。
+根据上面给出的两个数组，首先我们就可以拼出根节点，它就是1。
+题目上已说明数组中不存在重复元素，那么由1就可以定位到中序数组的中间位置，中序数组中1左边的部分就是左子树，1右边部分就是右子树。
+
+前序数组的左子树部分+根节点是1,2,4,5，中序数组的左子树部分+根节点是4,2,5,1。这两者的数组长度是一样的。
+我们可以根据中序数组的中间位置1，来确定前序数组的左右部分，由于前序数组第一个是根节点，
+所以其左边部分是：[1:mid_index]，右半部分是[mid_index+1:]
+这里的mid_index是中序数组的中间下标位置。
+递归函数实现如下：
+
+终止条件:前序和中序数组为空
+根据前序数组第一个元素，拼出根节点，再将前序数组和中序数组分成两半，递归的处理前序数组左边和中序数组左边，递归的处理前序数组右边和中序数组右边。
+动画演示如下：
+
+时间复杂度：O(n)
+空间复杂度：O(n)
+
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        if not preorder:
+            return None
+        # 根据前序数组的第一个元素，就可以确定根节点
+        root =TreeNode(preorder[0])
+        # 用preorder[0]去中序数组中查找对应的元素
+        mid = inorder.index(preorder[0])
+        # 递归的处理前序数组的左边部分和中序数组的左边部分
+		# 递归处理前序数组右边部分和中序数组右边部分
+        root.left= self.buildTree(preorder[1:mid+1], inorder[:mid])
+        root.right = self.buildTree(preorder[mid+1:], inorder[mid+1:])
+        
+        return root
+        
