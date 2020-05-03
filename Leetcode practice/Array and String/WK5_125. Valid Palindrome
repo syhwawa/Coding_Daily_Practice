@@ -17,7 +17,7 @@ Output: false
 比较两者是否相同，不同就return False
 相同则两指针往中间靠
 当 i > j 的时候，return True
-
+Python isalnum() 方法检测字符串是否由字母和数字组成。
 Solution：
 class Solution:
     def isPalindrome(self, s: str) -> bool:
