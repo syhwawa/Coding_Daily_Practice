@@ -1,0 +1,60 @@
+Given two strings s and t , write a function to determine if t is an anagram of s.
+
+Example 1:
+
+Input: s = "anagram", t = "nagaram"
+Output: true
+Example 2:
+
+Input: s = "rat", t = "car"
+Output: false
+Note:
+You may assume the string contains only lowercase alphabets.
+
+Follow up:
+What if the inputs contain unicode characters? How would you adapt your solution to such case?
+
+Solution 1：
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        
+        Counter = {}
+        if len(t) != len(s):
+            return False
+        
+        for char in s:
+            if char not in Counter:
+                Counter[char] = 1
+            else:
+                Counter[char] += 1
+        
+        for char in t:
+            if char in Counter:
+                Counter[char] -= 1
+            else:
+                return False
+        
+        for i in Counter.values():
+            if i != 0:
+                return False
+                
+  Solution 2:
+  
+  class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        s = sorted(s)
+        t = sorted(t)
+        if(len(s)!=len(t)):
+            return False
+        count = 0    
+        for i in range(0,len(s)):
+            if(s[i] == t[i]):
+                count += 0 
+            else:
+                count += 1
+        if(count == 0):
+            return True
+        else: 
+            return False
+        
+        return True      
