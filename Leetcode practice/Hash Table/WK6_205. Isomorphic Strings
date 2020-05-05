@@ -1,0 +1,30 @@
+Given two strings s and t, determine if they are isomorphic.
+
+Two strings are isomorphic if the characters in s can be replaced to get t.
+
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.
+
+Example 1:
+
+Input: s = "egg", t = "add"
+Output: true
+Example 2:
+
+Input: s = "foo", t = "bar"
+Output: false
+Example 3:
+
+Input: s = "paper", t = "title"
+Output: true
+
+Solution:
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        hashtable = {}
+        for i in range(len(s)):
+            if s[i] in hashtable and hashtable[s[i]] != t[i]:
+                return False
+            if s[i] not in hashtable and t[i] in hashtable.values():
+                return False
+            hashtable[s[i]]= t[i]
+        return True
