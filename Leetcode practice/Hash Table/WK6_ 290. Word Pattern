@@ -1,0 +1,42 @@
+Given a pattern and a string str, find if str follows the same pattern.
+
+Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in str.
+
+Example 1:
+
+Input: pattern = "abba", str = "dog cat cat dog"
+Output: true
+Example 2:
+
+Input:pattern = "abba", str = "dog cat cat fish"
+Output: false
+Example 3:
+
+Input: pattern = "aaaa", str = "dog cat cat dog"
+Output: false
+Example 4:
+
+Input: pattern = "abba", str = "dog dog dog dog"
+Output: false
+
+Solution:
+class Solution:
+    def wordPattern(self, pattern: str, str: str) -> bool:
+        s = str.split(' ')
+        if len(pattern) != len(s):
+            return False
+
+        hashtable = {}
+        
+        for i in range(len(pattern)):
+            if pattern[i] not in hashtable:
+                hashtable.get(pattern[i], 0) + 1
+                if s[i] in hashtable.values(): 
+                    return False #if the word is already in hashmap, return False (e.g. 'a' and 'b' mean 'dog')
+                hashtable[pattern[i]] = s[i]
+            
+            if hashtable[pattern[i]] != s[i]:
+                return False #if the same key has 2 differnt words, return False (e.g. 'a' is 'dog' and 'fish')
+        
+        return True
+    
