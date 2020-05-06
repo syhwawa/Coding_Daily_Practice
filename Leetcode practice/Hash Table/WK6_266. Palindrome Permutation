@@ -28,3 +28,18 @@ class Solution(object):
                 oddChars.add(c)
 
         return len(oddChars) <= 1
+
+class Solution(object):
+    def canPermutePalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        count = collections.Counter(s)
+        chance = 1
+        for char in count:
+            if count[char]%2 != 0:
+                chance -= 1
+                if chance < 0:
+                    return False
+        return True
