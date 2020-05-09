@@ -1,4 +1,4 @@
 Coding pratise since Mar 2020
-## LT:leetcode
+## LT:Leetcode (./Leetcode%20practice)
 ## HR:HanckerRank
-## Gradute School: Data Science with Python (Pandas)
+## Gradute School Tutorial: Data Science with Python (Pandas)
