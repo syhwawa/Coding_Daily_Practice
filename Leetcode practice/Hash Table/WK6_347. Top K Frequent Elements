@@ -1,0 +1,37 @@
+Given a non-empty array of integers, return the k most frequent elements.
+
+Example 1:
+
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+Example 2:
+
+Input: nums = [1], k = 1
+Output: [1]
+Note:
+
+You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
+Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
+It's guaranteed that the answer is unique, in other words the set of the top k frequent elements is unique.
+You can return the answer in any order.
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        hashtable1 = {}
+        hashtable2 = {}
+        res = []
+        for i in nums:
+            hashtable1[i] = hashtable1.get(i, 0)+1
+        #save as new ditcs with {appreance time : [each element]}
+        for idx, values in hashtable1.items():   
+            if values not in hashtable2:
+                hashtable2[values] = [idx]
+            else:
+                hashtable2[values].append(idx)
+            
+        for x in range(len(nums), 0, -1):
+            if x in hashtable2: #iterate list backward
+                for i in hashtable2[x]: # iterate 
+                    res.append(i)
+                    if len(res) == k:
+                        return res
