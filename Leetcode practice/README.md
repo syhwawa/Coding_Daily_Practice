@@ -1,4 +1,4 @@
-### Week 6: 30 days Coding Challenges, Hashtable
+### Week 6: 30 days Coding Challenges(May), Hashtable
 ### Week 5: 30 days Coding Challenges, Array, String
 ### Week 4: 30 days Coding Challenges, Array, hashtable
 ### Week 3: 30 days Coding Challenges, Array
