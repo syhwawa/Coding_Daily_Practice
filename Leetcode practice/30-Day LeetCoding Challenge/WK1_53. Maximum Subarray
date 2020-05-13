@@ -8,7 +8,7 @@ Explanation: [4,-1,2,1] has the largest sum = 6.
 
 1. 先考虑都是负数的情况
 2. 设置local和global max
-local_max 为 0 和local_max+当前num 的Max
+local_max 为 0 和local_max+当前num 的Max, local_max 累加小于0 则update 为0
 Global_max 为 所有当中最大值。
 
 Solutions:
