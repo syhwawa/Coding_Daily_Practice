@@ -1,0 +1,45 @@
+You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
+
+Example 1:
+
+Input: coins = [1, 2, 5], amount = 11
+Output: 3 
+Explanation: 11 = 5 + 5 + 1
+Example 2:
+
+Input: coins = [2], amount = 3
+Output: -1
+
+关键点解析
+动态规划
+
+子问题
+
+用dp[i] 来表示组成i块钱，需要最少的硬币数，那么
+
+第j个硬币我可以选择不拿 这个时候， 硬币数 = dp[i]
+
+第j个硬币我可以选择拿 这个时候， 硬币数 = dp[i - coins[j]] + 1
+
+和背包问题不同， 硬币是可以拿任意个
+
+对于每一个 dp[i] 我们都选择遍历一遍 coin， 不断更新 dp[i]
+
+Solution :
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+
+        # Values in this array equal the number of coins needed to achieve the cost of the index
+        minCoin = [amount +1]*(amount+1)
+        minCoin[0] = 0
+        
+        # Loop through every needed amount
+        for i in range(amount + 1):
+            for coin in coins:
+                if i >= coin:
+                    # minCoins[i]: number of coins needed to make amount i
+                    # minCoins[i-coin]: number of coins needed to make the amount before adding 
+                    #                   the current coin to it (+1 to add the current coin)
+                    minCoin[i] = min(minCoin[i], minCoin[i - coin] + 1)
+                    
+        return -1 if minCoin[-1] == amount +1 else minCoin[-1]
