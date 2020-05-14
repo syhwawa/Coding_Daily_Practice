@@ -1,0 +1,35 @@
+sorted(iterable, cmp=None, key=None, reverse=False)
+
+iterable - A sequence (string, tuple, list) or collection (set, dictionary, frozen set) or any other iterator.
+
+cmp - The comparison function, this one has two parameters, and the values of the parameters are taken from the iterable object. The rule that this function must follow is that greater than returns 1, less than returns -1, and equal to returns 0
+reverse (Optional) - If True, the sorted list is reversed (or sorted in descending order). Defaults to False if not provided.
+
+key (Optional) - A function that serves as a key for the sort comparison. Defaults to
+
+
+https://www.programiz.com/python-programming/methods/built-in/sorted
+
+Example
+
+>>>a = [5,7,6,3,4,1,2]
+>>> b = sorted(a)       # 保留原列表
+>>> a 
+[5, 7, 6, 3, 4, 1, 2]
+>>> b
+[1, 2, 3, 4, 5, 6, 7]
+ 
+>>> L=[('b',2),('a',1),('c',3),('d',4)]
+>>> sorted(L, cmp=lambda x,y:cmp(x[1],y[1]))   # 利用cmp函数
+[('a', 1), ('b', 2), ('c', 3), ('d', 4)]
+>>> sorted(L, key=lambda x:x[1])               # 利用key
+[('a', 1), ('b', 2), ('c', 3), ('d', 4)]
+ 
+ 
+>>> students = [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
+>>> sorted(students, key=lambda s: s[2])            # 按年龄排序
+[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+ 
+>>> sorted(students, key=lambda s: s[2], reverse=True)       # 按降序
+[('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
+>>>
