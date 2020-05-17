@@ -34,6 +34,8 @@ min_stack等价于遍历stack所有元素，把升序的数字都删除掉，留
 时间复杂度 O(1)O(1) ：压栈，出栈，获取最小值的时间复杂度都为 O(1)O(1) 。
 空间复杂度 O(N)O(N) ：包含 NN 个元素辅助栈占用线性大小的额外空间。
 
+https://leetcode-cn.com/problems/min-stack/solution/min-stack-fu-zhu-stackfa-by-jin407891080/
+
 class MinStack:
     def __init__(self):
         self.stack = []
