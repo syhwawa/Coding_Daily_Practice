@@ -25,7 +25,7 @@ minStack.pop();
 minStack.top();    // return 0
 minStack.getMin(); // return -2
 
-
+Solution 1: using the helper stack
 class MinStack:
 
     def __init__(self):
@@ -53,6 +53,41 @@ class MinStack:
     def getMin(self) -> int:
         return self.min_stack[-1]
 Similar question: 716 max stack
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(x)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
+
+
+Solution 2:
+Using knowledge of tuple, do not need helper stack
+
+class MinStack:
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.stack = []
+
+    def push(self, x: int) -> None:
+        if not self.stack:
+            self.stack.append((x, x))
+        else:
+            self.stack.append((x, min(x, self.stack[-1][1])))
+        
+    def pop(self) -> None:
+        self.stack.pop()
+
+    def top(self) -> int:
+        return self.stack[-1][0]
+
+    def getMin(self) -> int:
+        return self.stack[-1][1]
+
 
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()
