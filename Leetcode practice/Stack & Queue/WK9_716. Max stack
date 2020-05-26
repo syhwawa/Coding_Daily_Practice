@@ -24,6 +24,7 @@ The last four operations won't be called when stack is empty.
 https://leetcode.com/articles/max-stack/
 https://happyparrot.blogspot.com/2018/07/leetcode-716-max-stack.html?showComment=1590491158437#c233048780137177716
 
+Solution: For popMax, we know what the current maximum (peekMax) is. We can pop until we find that maximum, then push the popped elements back on the stack.
 Solution:
 class MaxStack(list):
     def __init__(self):  
