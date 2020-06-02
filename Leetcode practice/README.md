@@ -1,4 +1,5 @@
-### Week 8: High freequency interview questions (easy1)
+### Week 9: High freequency interview questions (easy2)
+### Week 9: High freequency interview questions (easy1)
 ### Week 8: High freequency interview questions (easy1)
 ### Week 7: 30 days Coding Challenges(May), Linked List, Facebook Frequent Interview Questions List
 ### Week 6: 30 days Coding Challenges(May), Hashtable
