@@ -1,0 +1,66 @@
+Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+
+For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
+
+    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+ 
+
+But the following [1,2,2,null,3,null,3] is not:
+
+    1
+   / \
+  2   2
+   \   \
+   3    3
+   
+Solution1:Iteration
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if not root: return True
+        deq = deque([root.left,root.right])
+
+        while deq:
+            r1 = deq.pop()
+            r2 = deq.pop()
+            if r1 == r2: continue
+            if not r1 or not r2: return False
+            if r1.val != r2.val: return False
+            deq.extend([r1.left,r2.right,r1.right,r2.left])
+
+        return True
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def isSymmetric(self, root: TreeNode) -> bool:
+        def dfs(root1, root2):
+            if root1 == root2: return True
+            if not root1 or not root2: return False
+            if root1.val != root2.val: return False
+            return dfs(root1.left, root2.right) and dfs(root1.right, root2.left)
+        if not root: return True
+        return dfs(root.left, root.right)
+
+
