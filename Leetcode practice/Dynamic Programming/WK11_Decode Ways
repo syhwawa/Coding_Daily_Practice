@@ -1,0 +1,60 @@
+A message containing letters from A-Z is being encoded to numbers using the following mapping:
+
+'A' -> 1
+'B' -> 2
+...
+'Z' -> 26
+Given a non-empty string containing only digits, determine the total number of ways to decode it.
+
+Example 1:
+
+Input: "12"
+Output: 2
+Explanation: It could be decoded as "AB" (1 2) or "L" (12).
+Example 2:
+
+Input: "226"
+Output: 3
+Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
+
+'''
+这道题目实际上也可以看作爬楼梯问题，每次解码一个数字或者两个数字。我们用dp[i]表示解码字符串s[:i]（包含s[0],s[1],...,s[i-1])的方法总数,
+考虑dp[i+1]的计算，即解码s[:i+1]的可能情形：
+
+s[i]存在字典中，即s[i] ！= '0'（因为测试都是数码串，因此可以这么写），此时解码s[:i+1]可以通过解码字符子串s[:i]和最后一个字符s[i]得到
+s[i-1:i+1] （即s[i-1]和s[i]构成的字符串）在字典中，
+在python中即 s[i-1:i+1]>='10 and s[i-1:i+1]<= '26'，此时解码s[:i+1]也可以通过解码字符子串s[:i-1]和最后两个个字符s[i-1:i+1]得到
+'''
+
+
+Solution:
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        '''
+        Similar Questions: Climbing stairs
+        First, you need to figure out the how to calculate the numbers.
+        when add a letter in s, if s + s[-1] -
+        Using the idea in Climbing stairs, the number of the last element 
+        
+        f(n) += f(n-1) when 1 <= s[n-1] <= 9
+        f(n) += f(n-2) when  s[n-2] + s[n-1] -> 10-26
+        else: return 0 when s start with 0
+        '''
+        if s == "" or s[0] == '0':
+            return 0
+        
+        dp = [0 for _ in range(len(s)+1)]
+        dp[0] = 1
+        dp[1] = 1
+        
+        for i in range(2, len(s) + 1):
+            if int(s[i - 1]) != 0:
+                dp[i] += dp[i - 1]
+            if 10 <= int(s[i-2:i]) <= 26:
+                dp[i] += dp[i - 2]
+                
+        return dp[-1]
+   
+
+
+   
