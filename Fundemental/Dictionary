@@ -1,0 +1,309 @@
+"""
+Dictionary lookup and update.
+"""
+
+ 
+print("Dictionary Lookup")
+print("=================")
+
+cipher = {'p': 'o', 'y': 'h', 't': 'n',
+          'h': 't', 'o': 'y', 'n': 'p'} 
+print(cipher)
+
+# Use indexing with keys to access values
+print(cipher['t'])
+print(cipher['n'])
+
+def encrypt(cipher, word):
+    """encrypt word using cipher"""
+    encrypted = ""
+    for char in word:
+        encrypted += cipher[char]
+    return encrypted
+
+python = "python"
+enc = encrypt(cipher, python)
+print(python, enc)
+
+# It is an error to use a non-existent key
+# print(cipher[1])
+
+# Use .get when you are unsure if the key exists
+print(cipher.get('t'))
+print(cipher.get(1))
+print(cipher.get(1, 'z'))
+
+print("")
+print("Dictionary Update")
+print("=================")
+
+print(cipher)
+
+# Modify an existing key->value mapping
+cipher['p'] = 'q'
+print(cipher)
+
+# Create a new key->value mapping
+cipher['r'] = 'z'
+print(cipher)
+
+enc2 = encrypt(cipher, python)
+print(python, enc, enc2)
+
+==============================
+Checking keys
+
+"""
+Checking for keys in a dictionary.
+"""
+
+print("Using 'in'")
+print("==========")
+
+mapping = {1: 5, 8: -3, 7: 22, 4: 13, 22: 17}
+
+# Keys
+print(1 in mapping)
+print(8 in mapping)
+
+# Values
+print(5 in mapping)
+print(-3 in mapping)
+
+# Both
+print(22 in mapping)
+
+# Neither
+print(82 in mapping)
+
+print("")
+
+print("Protecting from Errors")
+print("======================")
+
+keys = [8, 14, 22, 25]
+
+#for key in keys:
+#    print(key, mapping[key])
+
+for key in keys:
+    if key in mapping:
+        print(key, mapping[key])
+    else:
+        print("{} not in mapping".format(key))
+
+
+print("Issues with Keys")
+print("================")
+        
+# Be careful with what you use as keys!
+# If all keys are of the same type, you won't run
+#  into these issues
+mapping = {4.0: 2, 'a': 3, True: 'true', False: 9}
+print(mapping)
+
+mapping[1] = 7
+print(mapping)
+
+mapping[0] = 'false'
+print(mapping)
+
+mapping[4] = 7
+print(mapping)
+
+mapping['A'] = 'abc'
+print(mapping)
+===============================================
+"""
+Example code for working with dictionary keys
+"""
+
+# Three example of dictionaries - note that dictionary keys in Python must be immutable
+simple_dict = {"Joe" : 1, "Scott" : 2, "John" : 3}
+print(simple_dict)
+
+#bad_dict = {["Joe", "Warren"] : 1, ["Scott", "Rixner"] : 2, ["John", "Greiner"] : 3}
+#print(bad_dict)
+
+good_dict = {("Joe", "Warren") : 1, ("Scott", "Rixner") : 2, ("John", "Greiner") : 3}
+print(good_dict)
+
+
+ #Examples of dictionary lookup
+print(simple_dict["Joe"])
+print(simple_dict["Scott"])
+#print(simple_dict["Stephen"])
+print(good_dict[("Joe", "Warren")])
+print(good_dict[("John", "Greiner")])
+
+
+
+
+# Custom code for looking up keys that may not always be present
+
+def lookup(my_dict, my_key, default_value=None):
+    """
+    Given dictionary my_dict and key my_key, 
+    return my_dict[my_key] if my_key is in my_dict
+    otherwise return default_value
+    """
+    if my_key in my_dict:
+        return my_dict[my_key]
+    else:
+        return default_value
+
+simple_dict = {"Joe" : 1, "Scott" : 2, "John" : 3}
+print(lookup(simple_dict, "Joe", -1))
+print(lookup(simple_dict, "Stephen", -1))
+print(lookup(simple_dict, "Stephen"))
+
+
+
+
+
+
+
+# Built-in Python dictionary method get() in place of lookup()
+#simple_dict = {"Joe" : 1, "Scott" : 2, "John" : 3}
+#print(simple_dict.get("Joe", -1))
+#print(simple_dict.get("Stephen", -1))
+#print(simple_dict.get("Stephen"))		# default value if parameter is omitted is None
+
+# Note that we can acheive the same effect in lookup() 
+# via default parameter definition of the form "default_value = None"
+-------------------------------------------------------------------
+"""
+Solution - Write a function value_sum(my_dict) that
+returns the sum of the values in a dictionary
+"""
+
+
+def value_sum(my_dict):
+    """
+    Given a dictionary my_dict whose values are numbers, return 
+    the sums of the values in my_dict
+    """
+    
+    # Enter code here
+    value_sum = 0
+    for key in my_dict:
+        value_sum += my_dict[key]
+    return value_sum
+
+# Testing code
+print(value_sum({}))
+print(value_sum({0 : 1}))
+print(value_sum({"Joe" : 1, "Scott" : 2, "John" : 4}))
+
+# Output
+#0
+#1
+#7
+
+==============================
+"""
+Template - Write a function make_dict(key_value_list) that
+takes a list of tuples (key, value) and returns a 
+dictionary with these keys and values
+"""
+
+
+def make_dict(key_value_list):
+    """
+    Given a list of tuples of the form (key, value), 
+    return a dictionary with the corresponding keys and values
+    """
+    
+    # Enter code here
+    pass
+
+# Testing code
+print(make_dict([]))
+print(make_dict([(0, 1)]))
+print(make_dict([("Joe", 1), ("Scott", 2), ("John", 4)]))
+
+# Output
+#{}
+#{0: 1}
+#{'John': 4, 'Joe': 1, 'Scott': 2}
+
+
+"""
+Template - Write a function make_dict(key_value_list) that
+takes a list of tuples (key, value) and returns a 
+dictionary with these keys and values
+"""
+
+============================================================
+
+def make_dict(key_value_list):
+    """
+    Given a list of tuples of the form (key, value), 
+    return a dictionary with the corresponding keys and values
+    """
+    
+    # Enter code here
+    answer = {}
+    for key, value in key_value_list:
+        answer[key] = value   
+    return answer
+
+# Testing code
+print(make_dict([]))
+print(make_dict([(0, 1)]))
+print(make_dict([("Joe", 1), ("Scott", 2), ("John", 4)]))
+
+# Output
+#{}
+#{0: 1}
+#{'John': 4, 'Joe': 1, 'Scott': 2}
+
+"""
+Template for part 1
+Using substitution ciphers to encrypt and decrypt plain text
+"""
+
+============================================================
+A simple substitution cipher is an encryption scheme where each letter in an alphabet to replaced by a different letter in the same alphabet with the restriction that each letter's replacement is unique. The template for this question contains an example of a substitution cipher represented a dictionary \color{red}{\verb|CIPHER_DICTIONARY|}CIPHER_DICTIONARY. Your task is to write a function \color{red}{\verb|encrypt(phrase, cipher_dict)|}encrypt(phrase,cipher_dict) that takes a string \color{red}{\verb|phrase|}phrase and a dictionary \color{red}{\verb|cipher_dict|}cipher_dict and returns the results of replacing each character in \color{red}{\verb|phrase|}phrase by its corresponding value in \color{red}{\verb|cipher_dict|}cipher_dict. Encrypt template --- Encrypt solution
+"""
+Solution for parts 1-2, Template for part 3
+Using substitution ciphers to encrypt and decrypt plain text
+"""
+
+# Part 1 - Use a dictionary that represents a substition cipher to 
+# encrypt a phrase
+
+# Example of a cipher dictionary 26 lower case letters plus the blank
+CIPHER_DICT = {'e': 'u', 'b': 's', 'k': 'x', 'u': 'q', 'y': 'c', 'm': 'w', 'o': 'y', 'g': 'f', 'a': 'm', 'x': 'j', 'l': 'n', 's': 'o', 'r': 'g', 'i': 'i', 'j': 'z', 'c': 'k', 'f': 'p', ' ': 'b', 'q': 'r', 'z': 'e', 'p': 'v', 'v': 'l', 'h': 'h', 'd': 'd', 'n': 'a', 't': ' ', 'w': 't'}
+
+def encrypt(phrase, cipher_dict):
+    """
+    Take a string phrase (lower case plus blank) 
+    and encypt it using the dictionary cipher_dict
+    """
+    answer = ''
+    for letter in phrase:
+        answer += CIPHER_DICT[letter]
+    return answer
+        
+
+# Tests
+print("Output for part 1")
+print(encrypt("pig", CIPHER_DICT))
+print(encrypt("hello world", CIPHER_DICT))
+print()
+
+# Output for part 1
+#vif
+#hunnybtygnd
+
+
+
+
+
+
+Challenge: Write a function \color{red}{\verb|make_decipher_dict(cipher_dict)|}make_decipher_dict(cipher_dict) that takes a cipher dictionary \color{red}{\verb|cipher_dict|}cipher_dict and returns a new dictionary \color{red}{\verb|decipher_dict|}decipher_dict with the property that applying \color{red}{\verb|decipher_dict|}decipher_dict to a phrase encrypted using \color{red}{\verb|cipher_dict|}cipher_dict returns the original phrase. Make decipher template --- Make decipher solution
+Challenge: Write a function \color{red}{\verb|make_cipher_dict(alphabet)|}make_cipher_dict(alphabet) that takes a string of unique characters and returns a randomly-generated cipher dictionary for the characters in \color{red}{\verb|alphabet|}alphabet . You should use the \color{red}{\verb|shuffle()|}shuffle() method in the \color{red}{\verb|random|}random module to ensure that your returned cipher dictionary is random. Make cipher template --- Make cipher solution
+
+值可以取任何数据类型，但键必须是不可变的，如字符串，数字或元组
+
