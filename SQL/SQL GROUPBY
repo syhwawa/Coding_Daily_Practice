@@ -1,0 +1,26 @@
+GROUP BY 语句
+GROUP BY 语句用于结合聚合函数，根据一个或多个列对结果集进行分组。
+
+SQL GROUP BY 语法
+SELECT column_name, aggregate_function(column_name)
+FROM table_name
+WHERE column_name operator value
+GROUP BY column_name;
+
+
++-----+---------+-------+------------+
+| aid | site_id | count | date       |
++-----+---------+-------+------------+
+|   1 |       1 |    45 | 2016-05-10 |
+|   2 |       3 |   100 | 2016-05-13 |
+|   3 |       1 |   230 | 2016-05-14 |
+|   4 |       2 |    10 | 2016-05-14 |
+|   5 |       5 |   205 | 2016-05-14 |
+|   6 |       4 |    13 | 2016-05-15 |
+|   7 |       3 |   220 | 2016-05-15 |
+|   8 |       5 |   545 | 2016-05-16 |
+|   9 |       3 |   201 | 2016-05-17 |
++-----+---------+-------+------------+
+
+SELECT site_id, SUM(access_log.count) AS nums
+FROM access_log GROUP BY site_id;
