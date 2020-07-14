@@ -1,0 +1,26 @@
+SQL IN 语法
+
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (value1,value2,...);
+
+
+SQL BETWEEN 操作符
+BETWEEN 操作符选取介于两个值之间的数据范围内的值。这些值可以是数值、文本或者日期。
+
+SQL BETWEEN 语法
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2;
+
+下面的 SQL 语句选取 name 以介于 'A' 和 'H' 之间字母开始的所有网站：
+
+实例
+SELECT * FROM Websites
+WHERE name BETWEEN 'A' AND 'H';
+
+下面的 SQL 语句选取 date 介于 '2016-05-10' 和 '2016-05-14' 之间的所有访问记录：
+
+实例
+SELECT * FROM access_log
+WHERE date BETWEEN '2016-05-10' AND '2016-05-14';
