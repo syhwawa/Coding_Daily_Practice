@@ -42,4 +42,31 @@ class Solution:
 
         helper(nums, target, [])
         return res
-  ```
+ ```
+ 
+ ``` Python
+  class Solution:
+    def combinationSum(self, nums: List[int], target: int) -> List[List[int]]:
+        if not nums:
+            return []
+        if min(nums) > target:
+            return []
+
+        nums.sort()
+        res = []
+        track = []
+
+        def helper(nums, target, track):
+            if target == 0:
+                res.append(track[:])
+                return
+            for i in range(len(nums)):
+                if nums[i] > target:
+                    break
+                track.append(nums[i])
+                helper(nums[i:], target-nums[i], track)
+                track.pop()
+
+        helper(nums, target, track)
+        return res
+   ```
