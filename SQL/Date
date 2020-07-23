@@ -1,0 +1,1 @@
+日期函数： DATEDIFF(date1,date2) ，返回date1与date2之间相差的天数
