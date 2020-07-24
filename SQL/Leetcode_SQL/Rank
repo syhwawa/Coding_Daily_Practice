@@ -1,0 +1,10 @@
+SELECT
+ v,
+ RANK () OVER ( 
+ ORDER BY v 
+ ) rank_no 
+FROM
+ sales.rank_demo
+ 
+ 
+
