@@ -102,7 +102,7 @@ SELECT DISTINCT s1.name,a.company,a.num FROM route a JOIN route b
 ON (a.company = b.company AND a.num = b.num) JOIN stops s1 ON a.stop = s1.id
 JOIN stops s2 ON b.stop = s2.id WHERE s1.name = 'Craiglockhart' or s2.name = 'Craiglockhart'
 ```
-#### NSS Tutorial
+## NSS Tutorial
 Scores for Institutions in Manchester
 7.
 Show the average scores for question 'Q22' for each institution that include 'Manchester' in the name.
