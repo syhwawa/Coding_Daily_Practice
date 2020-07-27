@@ -102,3 +102,34 @@ SELECT DISTINCT s1.name,a.company,a.num FROM route a JOIN route b
 ON (a.company = b.company AND a.num = b.num) JOIN stops s1 ON a.stop = s1.id
 JOIN stops s2 ON b.stop = s2.id WHERE s1.name = 'Craiglockhart' or s2.name = 'Craiglockhart'
 ```
+#### NSS Tutorial
+Scores for Institutions in Manchester
+7.
+Show the average scores for question 'Q22' for each institution that include 'Manchester' in the name.
+
+The column score is a percentage - you must use the method outlined above to multiply the percentage by the response and divide by the total response. Give your answer rounded to the nearest whole number.
+
+```
+SELECT institution,
+round(sum(score * response / 100) / sum(response) * 100,0)
+FROM nss
+WHERE question='Q22'
+AND (institution LIKE '%Manchester%')
+GROUP BY institution;
+```
+
+Number of Computing Students in Manchester
+8.
+Show the institution, the total sample size and the number of computing students for institutions in Manchester for 'Q01'.
+```
+SELECT institution, SUM(sample), 
+(SELECT sample FROM nss y
+WHERE subject='(8) Computer Science'
+AND x.institution = y.institution
+AND question='Q01') 
+AS comp
+FROM nss x
+WHERE question='Q01'
+AND (institution LIKE '%Manchester%')
+GROUP BY institution;
+```
