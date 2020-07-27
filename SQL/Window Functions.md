@@ -1,3 +1,6 @@
+#### Window Functions
+You will learn about window functions and how to pass aggregate functions along a dataset. You will also learn how to calculate running totals and partitioned averages.
+
 RANK()函数是一个Window函数，它为结果集的分区中的每一行分配一个排名。
 分区中具有相同值的行将获得相同的排名。 分区中第一行的等级是1。 RANK()函数将绑定行的数量添加到绑定等级以计算下一行的等级，因此，等级可能不是连续的。
 RANK()函数的语法如下所示：
