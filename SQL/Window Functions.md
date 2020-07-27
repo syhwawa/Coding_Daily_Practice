@@ -1,4 +1,4 @@
-#### Window Functions
+### Window Functions
 You will learn about window functions and how to pass aggregate functions along a dataset. You will also learn how to calculate running totals and partitioned averages.
 
 RANK()函数是一个Window函数，它为结果集的分区中的每一行分配一个排名。
@@ -29,6 +29,7 @@ FROM
  sales.rank_demo;
 SQL
 第四，使用ROW_NUMBER()为sales.rank_demo表的结果集中的行分配排名：
+```
 SELECT
  v,
  RANK () OVER ( 
@@ -37,7 +38,25 @@ SELECT
 FROM
  sales.rank_demo;
 SQL
-执行上面查询语句，得到以下结果：
+```
+### Sliding Window Keywords
+```
+PRECEDING
+FOLLOWING
+UNBOUNDED PRECEDING
+UNBOUNDED FOLLOWING
+CURRENT ROW
+```
 
-从输出中清楚地显示，第二和第三行接收相同的等级，因为它们具有相同的值B。第四和第五行得到等级4，因为RANK()函数跳过等级3并且它们也具有相同的值(4)。//原文出自【易百教程】，商业转载请联系作者获得授权，非商业请保留原文链接：https://www.yiibai.com/sqlserver/sql-server-rank-function.html
-
+```
+-- Manchester City Home Games
+SELECT
+date,
+home_goal,
+away_goal,
+SUM(home_goal)
+OVER(ORDER BY date ROWS BETWEEN
+UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total
+FROM match
+WHERE hometeam_id = 8456 AND season = '2011/2012';
+```
