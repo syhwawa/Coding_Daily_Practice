@@ -133,3 +133,37 @@ WHERE question='Q01'
 AND (institution LIKE '%Manchester%')
 GROUP BY institution;
 ```
+## Windows Function
+Winners Only
+5.
+You can use SELECT within SELECT to pick out only the winners in Edinburgh.
+Show the parties that won for each Edinburgh constituency in 2017
+```
+SELECT constituency, party from
+(SELECT constituency, party, votes, 
+RANK() OVER(PARTITION BY constituency ORDER BY votes DESC) as posn
+  FROM ge
+ WHERE constituency BETWEEN 'S14000021' AND 'S14000026'
+   AND yr  = 2017
+)
+Tab where tab.posn = 1
+
+
+Scottish seats
+6.
+You can use COUNT and GROUP BY to see how each party did in Scotland. Scottish constituencies start with 'S'
+Show how many seats for each party in Scotland in 2017
+```
+SELECT party, count(*) from
+(SELECT constituency, party, votes, 
+RANK() OVER(PARTITION BY constituency ORDER BY votes DESC) as posn
+  FROM ge
+ WHERE constituency like 'S%'
+   AND yr  = 2017) rk
+where rk.posn = 1
+group by rk.party
+```
+
+
+
+
