@@ -20,7 +20,7 @@ func_parameter:
 
 type:
     Any valid MySQL data type
-
+  
 characteristic: {
     COMMENT 'string'
   | LANGUAGE SQL
