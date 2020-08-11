@@ -8,3 +8,5 @@ Introduction to Data Science with Python. 2 hours lesson with execises
 #### [Data Science Career Guide-Coding-Udemy](./Data%20Science%20Career%20Guide-Udemy)
 #### [Micro-courses-Kaggle](./Kaggle/Micro-Courses)
 Notes from Kaggle micro-courses
+#### [SQL](./SQL)
+SQL fundemental information, Solutions for questions from Leetcode and Hackerrank
