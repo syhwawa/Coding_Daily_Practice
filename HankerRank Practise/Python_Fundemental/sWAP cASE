@@ -6,7 +6,7 @@ Pythonist 2 → pYTHONIST 2
 Solution:
 def swap_case(s):
     a = ""
-    for let in s:
+    for let in s:  
         if let.isupper() == True:
             a+=(let.lower())
         else:
@@ -17,3 +17,5 @@ if __name__ == '__main__':
     s = input()
     result = swap_case(s)
     print(result)
+
+
