@@ -1,3 +1,5 @@
+# Binary Search Template
+
 ## Template 1:
 
 ```Python
@@ -133,4 +135,22 @@ Distinguishing Syntax:
 - Termination: left + 1 == right
 - Searching Left: right = mid
 - Searching Right: left = mid
-  
+ 
+ 
+Time and Space Complexity:
+
+Runtime: O(log n) -- Logorithmic Time
+
+Because Binary Search operates by applying a condition to the value in the middle of our search space and thus cutting the search space in half, in the worse case, we will have to make O(log n) comparisons, where n is the number of elements in our collection.
+
+Why log n?
+
+Binary search is performed by dividing the existing array in half.
+So every time you a call the subroutine ( or complete one iteration ) the size reduced to half of the existing part.
+First N become N/2, then it become N/4 and go on till it find the element or size become 1.
+The maximum no of iterations is log N (base 2).
+ 
+
+Space: O(1) -- Constant Space
+
+Although, Binary Search does require keeping track of 3 indicies, the iterative solution does not typically require any other additional space and can be applied directly on the collection itself, therefore warrants O(1) or constant space.
