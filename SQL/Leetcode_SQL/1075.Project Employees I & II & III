@@ -1,0 +1,202 @@
+1. 1075. Project Employees I
+
+Table: Project
+```
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| project_id  | int     |
+| employee_id | int     |
++-------------+---------+
+(project_id, employee_id) is the primary key of this table.
+employee_id is a foreign key to Employee table.
+Table: Employee
+
++------------------+---------+
+| Column Name      | Type    |
++------------------+---------+
+| employee_id      | int     |
+| name             | varchar |
+| experience_years | int     |
++------------------+---------+
+employee_id is the primary key of this table.
+ 
+
+Write an SQL query that reports the average experience years of all the employees for each project, rounded to 2 digits.
+
+The query result format is in the following example:
+
+Project table:
++-------------+-------------+
+| project_id  | employee_id |
++-------------+-------------+
+| 1           | 1           |
+| 1           | 2           |
+| 1           | 3           |
+| 2           | 1           |
+| 2           | 4           |
++-------------+-------------+
+
+Employee table:
++-------------+--------+------------------+
+| employee_id | name   | experience_years |
++-------------+--------+------------------+
+| 1           | Khaled | 3                |
+| 2           | Ali    | 2                |
+| 3           | John   | 1                |
+| 4           | Doe    | 2                |
++-------------+--------+------------------+
+
+Result table:
++-------------+---------------+
+| project_id  | average_years |
++-------------+---------------+
+| 1           | 2.00          |
+| 2           | 2.50          |
++-------------+---------------+
+The average experience years for the first project is (3 + 2 + 1) / 3 = 2.00 and for the second project is (3 + 2) / 2 = 2.50
+```
+
+```SQL
+# Write your MySQL query statement below
+SELECT p.project_id, round(avg(e.experience_years), 2) as average_years 
+FROM Project p Join Employee e on p.employee_id = e.employee_id
+Group by p.project_id
+```
+
+```
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| project_id  | int     |
+| employee_id | int     |
++-------------+---------+
+(project_id, employee_id) is the primary key of this table.
+employee_id is a foreign key to Employee table.
+Table: Employee
+
++------------------+---------+
+| Column Name      | Type    |
++------------------+---------+
+| employee_id      | int     |
+| name             | varchar |
+| experience_years | int     |
++------------------+---------+
+employee_id is the primary key of this table.
+ 
+
+2. 1077. Project Employees II
+Write an SQL query that reports all the projects that have the most employees.
+
+The query result format is in the following example:
+
+Project table:
++-------------+-------------+
+| project_id  | employee_id |
++-------------+-------------+
+| 1           | 1           |
+| 1           | 2           |
+| 1           | 3           |
+| 2           | 1           |
+| 2           | 4           |
++-------------+-------------+
+
+Employee table:
++-------------+--------+------------------+
+| employee_id | name   | experience_years |
++-------------+--------+------------------+
+| 1           | Khaled | 3                |
+| 2           | Ali    | 2                |
+| 3           | John   | 1                |
+| 4           | Doe    | 2                |
++-------------+--------+------------------+
+
+Result table:
++-------------+
+| project_id  |
++-------------+
+| 1           |
++-------------+
+The first project has 3 employees while the second one has 2.
+```
+
+```SQL
+# Write your MySQL query statement below
+SELECT project_id
+FROM Project 
+Group by project_id
+having count(employee_id)>=all(select count(employee_id) from Project group by project_id);
+```
+
+3. 1077. Project Employees III
+Write an SQL query that reports the most experienced employees in each project. In case of a tie, report all employees with the maximum number of experience years.
+
+The query result format is in the following example:
+
+Project table:
++-------------+-------------+
+| project_id  | employee_id |
++-------------+-------------+
+| 1           | 1           |
+| 1           | 2           |
+| 1           | 3           |
+| 2           | 1           |
+| 2           | 4           |
++-------------+-------------+
+
+Employee table:
++-------------+--------+------------------+
+| employee_id | name   | experience_years |
++-------------+--------+------------------+
+| 1           | Khaled | 3                |
+| 2           | Ali    | 2                |
+| 3           | John   | 3                |
+| 4           | Doe    | 2                |
++-------------+--------+------------------+
+
+Result table:
++-------------+---------------+
+| project_id  | employee_id   |
++-------------+---------------+
+| 1           | 1             |
+| 1           | 3             |
+| 2           | 1             |
++-------------+---------------+
+Both employees with id 1 and 3 have the most experience among the employees of the first project. For the second project, the employee with id 1 has the most experience.
+
+```SQL
+# Write your MySQL query statement below
+SELECT 
+    p.project_id, 
+    p.employee_id
+FROM 
+    Project p 
+Join 
+    Employee e 
+        on p.employee_id = e.employee_id
+WHERE
+    (p.project_id, e.experience_years) in 
+    (SELECT p.project_id, MAX(e.experience_years) 
+        FROM 
+        Project p 
+        Join Employee e 
+            on p.employee_id = e.employee_id 
+    GROUP BY P.project_id )
+
+```
+- 我们先筛选出每个项目最长工龄,两个表进行通过相同的employee_id进行 join，筛选出每组的最大experience_years，输出项目和experience_years
+- 用到结构 select * from ... where (project_id,experience_years) in ...
+
+```SQL
+SELECT project_id, employee_id
+FROM (
+    SELECT 
+        p.project_id, p.employee_id,
+        RANK() OVER(PARTITION BY p.project_id ORDER BY e.experience_years DESC)
+        as 'num'
+    FROM Project p LEFT JOIN Employee e ON p.employee_id = e.employee_id
+) t
+WHERE num = 1
+```
+
+```
