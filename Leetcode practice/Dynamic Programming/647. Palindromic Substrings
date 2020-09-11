@@ -1,0 +1,118 @@
+647. Palindromic Substrings
+Medium
+
+2966
+
+122
+
+Add to List
+
+Share
+Given a string, your task is to count how many palindromic substrings in this string.
+
+The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.
+
+Example 1:
+
+Input: "abc"
+Output: 3
+Explanation: Three palindromic strings: "a", "b", "c".
+ 
+
+Example 2:
+
+Input: "aaa"
+Output: 6
+Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+ 
+
+Note:
+
+The input string length won't exceed 1000.
+
+
+Explanation:
+
+This method uses an expand around center approach. The program iterates through each central point of a potential palindrome. moving left to right in the original input string. It then expands outward (left and right) from the center point and checks if the two characters match. This is done by moving a to the left by one and moving b to the right by one. It keeps doing this until they don't match (i.e. s[a] == s[b] fails to be true) or either end of the input string is reached. This expansion of the palindrome from its center outward occurs inside of the while loop. Once the while loop exits, we have expanded as far as we could and the length of the palindrome is equal to (b - a - 1). It is useful at this point to find the pattern between the length of a palindrome and the number of palindromes it contains (with the same center). Notice the following pattern:
+
+Palindromes of length 1 and 2 contain 1 palindrome:
+a and aa each contain one palindrome with the same center: a contains itself and aa contains itself
+Palindromes of length 3 and 4 contain 2 palindromes:
+aba and abba each contain two palindromes with the same center: aba contains b and itself and abba contains bb and itself
+Palindromes of length 5 and 6 contain 3 palindromes:
+abcba and abccba each contain three palindromes with the same center: abcba contains c, bcb, and itself and abccba contains cc, bccb, and itself
+etc. ...
+The reason we are only counting palindromes with the same center and not other palindromes it may contain is because we will have already counted them earlier in the for loop or will encounter them later in the for loop. It is important that we do not double count. Reflecting at the pattern above we can easily see that a palindrome of length L will contain (L+1)//2 palindromes within it that have the same center. Since the length of our palindrome is (b - a - 1), it follows that the number of palindromes withint it will be (b - a)//2. Thus at the end of the while loop, we add (b-a)//2 to r which is counting the total number of palindromes found thus far.
+
+Perhaps the most important (and most challenging) part of the program occurs in the structure of the inner for loop: for a,b in [(i,i),(i,i+1)] This part may take a little explanation to fully understand. A palindrome can be centered in one of two places. The palindrome dad is centered on one of its letters, specifcally the letter a. If you had to pick two indices to describe where the palindrome dad is centered you would say that it was centered at the indices 1 and 1, since 1 is the index of a. In general such palindromes (palindromes with an odd number of elements) are centered at (i,i) for some index i. The other type of palindrome, abba is centered in between two identical letters, specifcally it is centered between the letters b and b. If you had to pick two indices to describe where the palindrome abba is centered you would say that it was centered at the indices 1 and 2, since 1 and 2 are the indices of the central two b's. In general such palindromes (palindromes with an even number of elements) are centered at (i,i+1) for some index i. To correctly look at all the palindrome substrings, for each index i in the for loop we have to consider both centeral pivoting points. This is why the inner for loop iterates through both (i,i) and (i,i+1).
+
+The program ends by returning r, the final total count of palindromes found within the original string s.
+
+Glossary of Variables:
+L = length of original input string
+r = total current count of palindromic substrings
+a = number of units left of center of palindrome
+b = number of units right of center of palindrome
+
+```Python
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+	    L, r = len(s), 0
+	    for i in range(L):
+	    	for a,b in [(i,i),(i,i+1)]:
+	    		while a >= 0 and b < L and s[a] == s[b]: a -= 1; b += 1
+	    		r += (b-a)//2
+	    return r
+```
+Let N be the length of the string. The middle of the palindrome could be in one of 2N - 1 positions: either at letter or between two letters.
+
+For each center, let's count all the palindromes that have this center. Notice that if [a, b] is a palindromic interval (meaning S[a], S[a+1], ..., S[b] is a palindrome), then [a+1, b-1] is one too.
+
+Algorithm
+
+For each possible palindrome center, let's expand our candidate palindrome on the interval [left, right] as long as we can. The condition for expanding is left >= 0 and right < N and S[left] == S[right]. That means we want to count a new palindrome S[left], S[left+1], ..., S[right]
+
+```Python
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        dp = [[False for _ in range(len(s))] for _ in range(len(s))]
+        ans = 0
+
+        for j in range(len(s)):
+            for i in range(j+1):
+                if s[i] == s[j] and (j-i<2 or dp[i+1][j-1]):
+                    dp[i][j] = True
+                    ans += 1
+        return ans
+```
+
+```Python
+class Solution:
+    def countSubstrings(self, string: str) -> int:
+        count = 0
+        length = len(string)
+        dp = [[False] * length for _ in range(length)]
+        
+        # for single char
+        for i in range(length):
+            dp[i][i] = True
+            count += 1
+            
+        # for two char
+        for i in range(length-1):
+            if string[i] == string[i+1]:
+                dp[i][i+1] = True
+                count += 1
+                
+        # for three or more char
+        for new_len in range(3, length + 1):
+            for left in range(length - new_len + 1):
+                right = left + new_len - 1
+                
+                if dp[left+1][right-1] and string[left] == string[right]:
+                    dp[left][right] = True
+                    count += 1
+        
+        return count
+        
+```
