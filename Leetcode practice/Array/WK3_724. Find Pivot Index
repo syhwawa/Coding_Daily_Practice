@@ -31,13 +31,13 @@ Each element nums[i] will be an integer in the range [-1000, 1000].
 Solution 1:
 class Solution:
     def pivotIndex(self, nums: List[int]) -> int:
-        
-        for i in range(len(nums)):
-            if sum(nums[:i]) == sum(nums[i+1:]):
-                return i
-            
+        sum_left, sum_right = 0, sum(nums)
+        for index, num in enumerate(nums): 
+            sum_right -= num
+            if sum_left == sum_right:
+                return index
+            sum_left += num
         return -1
-        
  
 设置两个变量left和right，一个记录从左边开始的和，一个记录从右边开始的和。
 当遍历的时候，中心索引左边的和即left,中心索引右边的和即right，左边和右边不相等时，遍历进入数组的下一项，left增加一项，right减少一项。
