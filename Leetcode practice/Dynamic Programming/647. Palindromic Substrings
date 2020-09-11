@@ -1,17 +1,10 @@
 647. Palindromic Substrings
 Medium
 
-2966
-
-122
-
-Add to List
-
-Share
 Given a string, your task is to count how many palindromic substrings in this string.
 
 The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.
-
+```
 Example 1:
 
 Input: "abc"
@@ -24,13 +17,12 @@ Example 2:
 Input: "aaa"
 Output: 6
 Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
- 
-
+```
 Note:
 
 The input string length won't exceed 1000.
 
-
+```
 Explanation:
 
 This method uses an expand around center approach. The program iterates through each central point of a potential palindrome. moving left to right in the original input string. It then expands outward (left and right) from the center point and checks if the two characters match. This is done by moving a to the left by one and moving b to the right by one. It keeps doing this until they don't match (i.e. s[a] == s[b] fails to be true) or either end of the input string is reached. This expansion of the palindrome from its center outward occurs inside of the while loop. Once the while loop exits, we have expanded as far as we could and the length of the palindrome is equal to (b - a - 1). It is useful at this point to find the pattern between the length of a palindrome and the number of palindromes it contains (with the same center). Notice the following pattern:
@@ -53,6 +45,7 @@ L = length of original input string
 r = total current count of palindromic substrings
 a = number of units left of center of palindrome
 b = number of units right of center of palindrome
+```
 
 ```Python
 class Solution:
