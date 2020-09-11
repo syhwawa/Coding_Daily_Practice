@@ -39,6 +39,8 @@ class Solution:
             sum_left += num
         return -1
  
+Time C O(N)
+Space C O(1)
 设置两个变量left和right，一个记录从左边开始的和，一个记录从右边开始的和。
 当遍历的时候，中心索引左边的和即left,中心索引右边的和即right，左边和右边不相等时，遍历进入数组的下一项，left增加一项，right减少一项。
 
@@ -56,5 +58,5 @@ Solution 2:
         for i, j in enumerate(nums):
             if part_sum == (total - j) / 2:
                 return i
-            part_sum += j
+            part_sum += j3
         return -1
