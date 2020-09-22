@@ -11,6 +11,9 @@ I have a confusion that how the weights (a and b) for equation (y= a+bx) are cal
 
 by solving the linear equation a = mean (y) - b * mean(x) and b =  covariance / vaiance of X
 
+cov(x,y)=EXY－EX*EY
+https://zhidao.baidu.com/question/689931018470753924
+
 ```Python
 def linearRegressionLoo(obs_A, obs_B):
     error_sum = 0
