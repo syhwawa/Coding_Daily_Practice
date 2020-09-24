@@ -20,3 +20,4 @@ def getdevicemodel(data):
         if value == max_n:
             return res[idx - 1]
 ```
+
