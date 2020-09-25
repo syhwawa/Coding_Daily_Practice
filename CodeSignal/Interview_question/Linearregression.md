@@ -9,7 +9,7 @@ Output  linearRegressionLoo(obs_A, obs_B) = 4.083
 
 I have a confusion that how the weights (a and b) for equation (y= a+bx) are calculated in linear regression Machine learning Algorithm -
 
-by solving the linear equation a = mean (y) - b * mean(x) and b =  covariance / vaiance of X
+by solving the linear equation a = mean (y) - b * mean(x) and b =  covariance(x,y) /variance(x)
 
 cov(x,y)=EXY－EX*EY
 https://zhidao.baidu.com/question/689931018470753924
