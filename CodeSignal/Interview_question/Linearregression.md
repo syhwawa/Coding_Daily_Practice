@@ -30,8 +30,9 @@ def linearRegressionLoo(obs_A, obs_B):
         print(mean_A)
         print(mean_B)
         
-        slope = (((A_train[0] * B_train[0]  + A_train[1] * B_train[1])/ 2) - (mean_B * mean_A)) / (((A_train[0] - mean_A)** 2 + 
+        #slope = (((A_train[0] * B_train[0]  + A_train[1] * B_train[1])/ 2) - (mean_B * mean_A)) / (((A_train[0] - mean_A)** 2 + 
         (A_train[1] - mean_A)** 2)/2)
+        slope = (sum([A_train[i] * B_train[i] for i in range(n-1)]) - (n-1) * mean_A * mean_B) / (sum([x**2 for x in A_train]) - (n-1) * mean_A ** 2) 
         intercept = mean_B - slope * mean_A
         pred_B = slope * obs_A[i] + intercept 
         error_sum += (pred_B - obs_B[i]) **2 
