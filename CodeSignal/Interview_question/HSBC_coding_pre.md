@@ -42,6 +42,7 @@ def add_digits(n):
     return res
 
 add_digits(943)
+```
 
 4. Given a list of integers, find the largest difference between them.
 
@@ -65,6 +66,7 @@ maxdiff(arr)
 
 https://www.geeksforgeeks.org/maximum-difference-between-two-elements/
 
+```Python
 array = [45,3,8,1,2,19,22,35,23]
 new = sorted(array,reverse=False)
 
@@ -77,3 +79,4 @@ while True:
         break
     else:
         new.remove(B)
+```
