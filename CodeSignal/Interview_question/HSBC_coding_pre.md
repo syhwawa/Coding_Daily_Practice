@@ -64,3 +64,16 @@ maxdiff(arr)
 ```
 
 https://www.geeksforgeeks.org/maximum-difference-between-two-elements/
+
+array = [45,3,8,1,2,19,22,35,23]
+new = sorted(array,reverse=False)
+
+A = new[0]
+
+while True:
+    B = new[-1]
+    if array.index(B) > array.index(A):
+        print A,B
+        break
+    else:
+        new.remove(B)
