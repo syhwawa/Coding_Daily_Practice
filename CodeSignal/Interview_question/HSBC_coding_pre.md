@@ -80,3 +80,42 @@ while True:
     else:
         new.remove(B)
 ```
+
+
+5.Reverse:
+Input:Hello World
+Output:World Hello
+
+```
+def reverse_string(s):
+    r = ' '.join(reversed(s.split(' ')))
+    return r
+
+s = 'you shall not pass'
+reverse_string(s)
+```
+https://medium.com/@hmurari/a-popular-programming-interview-question-reverse-words-of-a-sentence-3bac606d15a2
+
+6. 
+calculate_distance(p1, p2)
+input p1 = (1,2), p2 = (4, -2)
+output 5
+
+import math
+def calculate_distance(p1, p2):
+    return int(math.sqrt((p1[0]-p2[0])** 2 + (p1[1]-p2[1]) ** 2))
+
+p1 = (1,2)
+p2 = (4, -2)
+calculate_distance(p1, p2)
+import math 
+  
+# Function to calculate distance 
+def distance(x1 , y1 , x2 , y2): 
+  
+    # Calculating distance 
+    return math.sqrt(math.pow(x2 - x1, 2) +
+                math.pow(y2 - y1, 2) * 1.0) 
+  
+# Drivers Code 
+print("%.6f"%distance(3, 4, 4, 3)) 
