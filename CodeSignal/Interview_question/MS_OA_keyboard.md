@@ -1,3 +1,4 @@
+```Python
 def entryTime(s, keypad):
     dic = {}
     for i in range(3):
@@ -19,7 +20,10 @@ def entryTime(s, keypad):
         else:
             res += 1    
     return res
-                 
+```
+
+```Python
 s = "5112"
 keypad = "752961348"
 print(entryTime(s, keypad))
+```
