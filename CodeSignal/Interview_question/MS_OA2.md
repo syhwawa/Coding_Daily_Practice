@@ -1,5 +1,6 @@
 # Selecting stock
 """
+```Python
 Q2: knapsack 
 
 curr: [1, 2, 4, 6]; future: [5, 3, 5, 6]; saving: 30 => 6
@@ -35,3 +36,4 @@ test_curr_price_1 = [1, 2, 4, 6]
 test_future_price_1 = [5, 3, 5, 6]
 test_saving_1 = 30
 print(max_profit(test_curr_price_1, test_future_price_1, test_saving_1))
+```
