@@ -11,7 +11,8 @@ the output should be
 sortStudents(students) = ["Jacky Mon Simonoff", "John Smith", 
                           "Lucy Smith", "Angela Zimonova"]
 ```
-
+```
 def sortStudents(students):
     students.sort(key=lambda x: x.split(" ")[-1])
     return students
+```
