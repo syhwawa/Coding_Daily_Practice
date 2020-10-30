@@ -36,3 +36,21 @@ def productExceptSelf(nums):
 
 nums = [1,2,3,4]
 productExceptSelf(nums)
+
+def productExceptSelf(nums):
+    res = [1 for _ in nums]
+    
+    left = 1
+    right = 1
+    
+    for i in range(len(nums)):
+        res[i] *= left
+        res[-1-i] *= right
+        left *=nums[i]
+        right *= nums[-1-i]
+        
+    return res
+
+nums = [1,2,3,4]
+productExceptSelf(nums)
+        
