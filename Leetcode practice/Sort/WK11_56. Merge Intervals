@@ -36,3 +36,28 @@ class Solution:
                 res[-1][1] = max(y, res[-1][1])
         
         return res
+        
+        
+        class Solution:
+    def merge(self, intervals):
+        if len(intervals) < 2:
+            return intervals
+        # sort the intervals on the first element
+        intervals.sort(key=lambda x: x[0])
+        res = []
+        start = intervals[0][0]
+        end = intervals[0][1]
+        for i in range(1, len(intervals)):
+            curr = intervals[i]
+            if curr[0] <= end:# overlapping intervals, adjust the 'end'
+                end = max(curr[1], end)
+            else:# non-overlapping interval, add the previous internval and reset
+                res.append([start, end])
+                start = curr[0]
+                end = curr[1]
+                
+        res.append([start,end])
+        return res
+    
+    # Time complexity:  O(N * logN)
+    # Space complexity: O(N)
