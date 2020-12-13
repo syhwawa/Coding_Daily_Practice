@@ -34,3 +34,23 @@ def find_missing_numbers(nums):
       res.append(i + 1)
 
   return res
+#Time complexity #
+#The time complexity of the above algorithm is O(n).
+
+#Space complexity #
+#Ignoring the space required for the output array, the algorithm runs in constant space O(1).
+
+#Solution 2 Hashset
+
+def find_missing_numbers(nums):
+  dic = set()
+  res = []
+  for i in nums:
+    dic.add(i)
+  for i in range(1, len(nums)+1):
+    if i not in dic:
+      res.append(i)
+
+  return res
+# TC: O(N)
+# SC: O(N)
