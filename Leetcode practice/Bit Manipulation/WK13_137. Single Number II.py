@@ -1,3 +1,4 @@
+"""
 Given a non-empty array of integers, every element appears three times except for one, which appears exactly once. Find that single one.
 
 Note:
@@ -13,6 +14,9 @@ Example 2:
 Input: [0,1,0,1,0,1,99]
 Output: 99
 
+Follow up: Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+"""
+
 ```Python
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
@@ -27,5 +31,16 @@ class Solution:
         for key, val in hashtable.items():
             if val == 1:
                 return key
+
+```Python
+from collections import Counter
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        c = collections.Counter(nums)
+        if len(nums) == 1:
+            return nums[0]
+        for i in c:
+            if c[i] == 1:
+                return i
 
 ```
