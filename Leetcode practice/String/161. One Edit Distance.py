@@ -1,3 +1,4 @@
+"""
 Given two strings s and t, return true if they are both one edit distance apart, otherwise return false.
 
 A string s is said to be one distance apart from a string t if you can:
@@ -32,11 +33,7 @@ Constraints:
 0 <= s.length <= 104
 0 <= t.length <= 104
 s and t consist of lower-case letters, upper-case letters and/or digits.
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/one-edit-distance
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
-
+"""
 ```Python
 
 class Solution:
