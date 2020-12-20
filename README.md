@@ -10,4 +10,4 @@ Introduction to Data Science with Python. 2 hours lesson with execises
 Notes from Kaggle micro-courses
 #### [SQL](./SQL)
 SQL fundemental information, Solutions for questions from Leetcode and Hackerrank
-
+#### educative
