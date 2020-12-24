@@ -47,3 +47,5 @@ Time Complexity: O(N**2)
                 return i + 1
         return n + 1
 Time Complexity: O(N)
+
+ https://leetcode-cn.com/problems/first-missing-positive/solution/que-shi-de-di-yi-ge-zheng-shu-by-leetcode-solution/
