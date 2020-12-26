@@ -26,7 +26,7 @@ class Solution:
         hashtable = {}
         for idx, value in enumerate(nums):
             if (target - value) in hashtable:
-                return [idx, hashtable[target-value]]
+                return [hashtable[target-value], idx]
             hashtable[nums[idx]] = idx
         return []
     
