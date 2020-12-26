@@ -21,3 +21,14 @@ class Solution:
             hash[values]= index
             
       
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashtable = {}
+        for idx, value in enumerate(nums):
+            if (target - value) in hashtable:
+                return [idx, hashtable[target-value]]
+            hashtable[nums[idx]] = idx
+        return []
+    
+    TC: O(N) N the number in array, each num cost O(1) for searching
+    SC: O(N) space for hashtable
