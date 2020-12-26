@@ -15,45 +15,35 @@ A solution set is:
 ]
 
 
-```Python
 class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
-        # Three pointers combined with sorted array
-        # sorted array which helps to skip the same nums in the array
-        nums.sort()
-        res = []
-        n = len(nums)
-        if (not nums or n < 3):
-            return []
-        
-        for i in range(n):
-            if nums[i] > 0: return res 
-            # skip the same nums
-            if (i > 0 and nums[i] == nums[i-1]):
+    def threeSum(self, arr: List[int]) -> List[List[int]]:
+        arr.sort()
+        triplets = []
+        for i in range(len(arr)):
+            right = len(arr) - 1
+            left = i + 1
+            if i > 0 and arr[i] == arr[i-1]:  # skip same element to avoid duplicate triplets
                 continue
-
-            l, r = i + 1, n -1
-
-            while r > l:
-                s = nums[i] + nums[l] + nums[r]
-                if s == 0:
-                    res.append([nums[i],  nums[l], nums[r]])
-                    # skip the same nums, r > l is epecially for the special case [0,0,0]
-                    while r > l and nums[l] == nums[l+1]:
-                        l += 1
-                    while r > l and nums[r] == nums[r-1]:
-                        r -= 1
-                    #move the new position
-                    l += 1
-                    r -= 1
                 
-                elif s < 0:
-                    l += 1
+            while(left < right):
+                total_sum = arr[left] + arr[right] + arr[i]
+                if total_sum == 0:  # found the triplet
+                    triplets.append([arr[i], arr[left], arr[right]])
+                    left += 1
+                    right -= 1
+                    
+                    while left < right and arr[left] == arr[left - 1]:
+                        left += 1  # skip same element to avoid duplicate triplets
+                        
+                    while left < right and arr[right] == arr[right + 1]:
+                        right -= 1  # skip same element to avoid duplicate triplets
+        
+                elif total_sum < 0:
+                    left += 1  # we need a pair with a bigger sum
                 else:
-                    r -= 1
+                    right -= 1  # we need a pair with a smaller sum
 
-        return res
- ```
+        return triplet
  https://leetcode-cn.com/problems/3sum/solution/pai-xu-shuang-zhi-zhen-zhu-xing-jie-shi-python3-by/
 复杂度分析
 时间复杂度：O(n^2)
