@@ -20,9 +20,6 @@ Example 3:
 Input: nums = [0], target = 0
 Output: 0
 
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/3sum-smaller
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 class Solution:
     def threeSumSmaller(self, nums: List[int], target: int) -> int:
         nums.sort()
