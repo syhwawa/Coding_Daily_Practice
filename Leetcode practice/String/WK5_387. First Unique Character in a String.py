@@ -19,8 +19,7 @@ class Solution:
   
         return -1
         
-        
-        
+              
 Solution 2: Hashtable
 class Solution:
     def firstUniqChar(self, s: str) -> int:
@@ -31,3 +30,18 @@ class Solution:
             if dicts[s[i]]==1:
                 return i
         return -1
+
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        hashtable = {}
+        for i in s:
+            if i not in hashtable:
+                hashtable[i] = 1
+            else:
+                hashtable[i] += 1
+
+        for idx, value in enumerate(s):
+            if hashtable[value] == 1:
+                return idx  
+        return -1
+        
