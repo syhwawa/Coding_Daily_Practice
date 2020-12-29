@@ -11,7 +11,6 @@ Input: "cbbd"
 Output: "bb"
 
 
- ```Python 
 Solution 1: Method based on center line enumeration
 class Solution:
     """
@@ -37,10 +36,38 @@ class Solution:
             right += 1
             
         return string[left + 1:right]
- ```
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        # Check if s is None or ""
+        if not s:
+            return ""
+        
+        longest = ""
+        for middle in range(len(s)):
+            # Expand from the center, two case 
+            odd = self.findPalindrome(s, middle, middle)
+            if len(odd) > len(longest):
+                longest = odd
+            even = self.findPalindrome(s, middle, middle + 1)
+            if len(even) > len(longest):
+                longest = even
+            #longest = max(longest, odd, even, key=len)
+        return longest
+    
+    def findPalindrome(self, s, left, right):
+        while left >= 0 and right < len(s):
+            if s[left] != s[right]:
+                break
+            left -= 1
+            right += 1
+        
+        return s[left+1:right]
+        
+  # TC: o(N**2), the length of string is 1 and 2 which has n and n - 1. Each centre will expand O(N) times
+  # SC: O(1)
   
-  Solution 2:
-```Python
+ Solution 2:
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         length = len(s)
@@ -70,5 +97,5 @@ class Solution:
                         start = left
                         
         return s[start: start + max_length]
-     ```    
+       
    
