@@ -59,3 +59,5 @@ class Solution:
         return dp[0][length-1]
         # Time complexity: O(N**2)
         # Space complexity O(N**2)
+https://www.jiuzhang.com/solution/longest-palindromic-subsequence/#tag-lang-python
+https://leetcode-cn.com/problems/longest-palindromic-subsequence/solution/dong-tai-gui-hua-si-yao-su-by-a380922457-3/
