@@ -14,7 +14,8 @@ Example 3:
 Input: 10
 Output: false
 Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
-```
+
+
 Solution 1:
 Change number as String
 class Solution:
@@ -36,9 +37,13 @@ class Solution:
                 return False
             l += 1; r -= 1
         return True
-```
+
 Follow up: Do not use str
 
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        return str(x) == str(x)[::-1]
+        
 Solution2:
 Get the Palindrome Number
 class Solution:
@@ -55,4 +60,5 @@ class Solution:
             return False
         
         return True
+
 
