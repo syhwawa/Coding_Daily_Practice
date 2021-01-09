@@ -69,4 +69,24 @@ class Solution:
                         s.insert(i+1, j)
                 
                 count = 1
- 
+                
+ class Solution:
+    def compress(self, chars: List[str]) -> int:
+        left = i = 0
+        length = len(chars)
+        while i < length:
+            count = 1
+            char = chars[i]
+            while (i < length - 1) and (char == chars[i+1]):
+                count += 1
+                i += 1
+            chars[left] = char 
+            if count > 1:
+                len_str = str(count)
+                chars[left + 1: left + 1 + len(len_str)] = len_str
+                left += len(len_str)
+            left, i = left + 1, i + 1
+        return left
+        
+ https://leetcode.com/problems/string-compression/discuss/92568/Python-Two-Pointers-O(n)-time-O(1)-space
+
