@@ -115,8 +115,6 @@ class Solution:
         # TC：O(N**2)
         # SC: O(N**2)
 
-        
-
 Problem 2: Given a binary tree, find the root-to-leaf path with the maximum sum.
 
 Solution: We need to find the path with the maximum sum. As we traverse all paths, we can keep track of the path with the maximum sum.
