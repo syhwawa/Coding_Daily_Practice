@@ -81,5 +81,45 @@ def main():
 
 main()
 
+Similar Problems #
+Leetcode 257
+Problem 1: Given a binary tree, return all root-to-leaf paths.
+
+Solution: We can follow a similar approach. We just need to remove the “check for the path sum.”
+  
+  # Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def binaryTreePaths(self, root: TreeNode) -> List[str]:
+        
+        res = []
+        
+        def dfs(root, path):
+            if root:
+                path += str(root.val)
+                if not root.right and not root.left:# 当前节点是叶子节点
+                    res.append(path)
+                else:
+                    path += "->" # 当前节点不是叶子节点，继续递归遍历
+                    dfs(root.left, path)
+                    dfs(root.right, path)
+        
+        dfs(root, "")
+        
+        return res
+    
+        # TC：O(N**2)
+        # SC: O(N**2)
+
+        
+
+Problem 2: Given a binary tree, find the root-to-leaf path with the maximum sum.
+
+Solution: We need to find the path with the maximum sum. As we traverse all paths, we can keep track of the path with the maximum sum.
+
 
 
