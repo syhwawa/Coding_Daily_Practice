@@ -43,6 +43,7 @@ class Solution:
                 current = current.next
  
         return head
- # TC: O(1)
+ # TC: O(n)
+ # SC: O(1)
         
 
