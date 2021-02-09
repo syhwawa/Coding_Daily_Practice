@@ -29,12 +29,20 @@ Output: true
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        lookup = {'(':')', '[': ']', '{': '}'}
         stack = []
+        dic = {"(": ")", "[": "]", "{": "}"}
         for i in s:
-            if i in lookup:
-                stack.append(i)
+            if i in dic:
+            # If the input string contains an opening parenthesis,
+            # push in on to the stack.
+                stack.append(dic[i])
             else:
-                if len(stack) == 0 or lookup[stack.pop()] != i: #case only ']'
+                # if the input string contains closing parenthesis, pop the corrpesponding opening one 
+                if len(stack) == 0:
                     return False
-        return len(stack) == 0 #case only '['
+                if stack.pop() != i:
+                    return False
+        
+        return len(stack) == 0
+        
+        
