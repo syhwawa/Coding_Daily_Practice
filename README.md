@@ -1,6 +1,6 @@
-## Coding pratise and learning materials since Mar 2020.
+# Coding pratise and learning materials since Mar 2020.
 #### [LT:Leetcode](./Leetcode%20practice)
-Leetcode daily pratice, currently has nearlt 100 question with solutions 
+Leetcode daily pratice, currently has nearlt 200 question with solutions 
 #### [HR:HanckerRank](./HankerRank%20Practise)
 HanckerRank pratice
 #### [Gradute School-Imperial College London: Data Science with Python (Pandas)](./Graduate%20School/Data%20Science%20with%20Python%20(Panda))
