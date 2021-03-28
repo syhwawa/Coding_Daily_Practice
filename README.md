@@ -1,4 +1,4 @@
-# Coding pratise and learning materials since Mar 2020.
+# Coding pratise and learning materials
 #### [LT:Leetcode](./Leetcode%20practice)
 Leetcode daily pratice, currently has nearlt 200 question with solutions 
 #### [HR:HanckerRank](./HankerRank%20Practise)
