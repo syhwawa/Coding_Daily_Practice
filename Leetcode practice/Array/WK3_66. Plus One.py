@@ -1,3 +1,4 @@
+"""
 Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
 
 The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
@@ -16,9 +17,9 @@ Output: [4,3,2,2]
 Explanation: The array represents the integer 4321.
 
 Solutions:
-
+"""
 class Solution:
-    def plusOne(self, digits: List[int]) -> List[int]:
+    def plusOne(self, digits):
         for i in reversed(range(len(digits))):         
             if digits[i] == 9:
                 digits[i] = 0
@@ -30,5 +31,5 @@ class Solution:
         digits.append(0)
         return digits
                          
-                              
+                        
         

@@ -14,7 +14,7 @@ Output: [[1,4],[2,5],[3,6]]
 
 """
 class Solution:
-    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+    def transpose(self, matrix):
         m = len(matrix)
         n = len(matrix[0])
         res = []
@@ -25,3 +25,5 @@ class Solution:
             res.append(temp)
 
         return res
+
+print(Solution().transpose([[1,2,3],[4,5,6],[7,8,9]]))

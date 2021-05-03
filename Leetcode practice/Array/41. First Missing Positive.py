@@ -19,9 +19,8 @@ Example 3:
 Input: nums = [7,8,9,11,12]
 Output: 1
 """
-
 class Solution:
-    def firstMissingPositive(self, A: List[int]) -> int:
+    def firstMissingPositive(self, A):
         # write your code in Python 3.6
         A.sort()
         if not A:
@@ -33,11 +32,12 @@ class Solution:
                 return i
         return A[-1] + 1
         
-Time Complexity: O(N**2)
-
+#Time Complexity: O(N**2)
+A = [1,2,0]
+print(Solution().firstMissingPositive(A))
  
- class Solution:
-    def firstMissingPositive(self, nums: List[int]) -> int:
+class Solution:
+    def firstMissingPositive(self, nums):
         n = len(nums)
         for i in range(n):
             while 1 <= nums[i] <= n and nums[nums[i] - 1] != nums[i]:
@@ -46,6 +46,6 @@ Time Complexity: O(N**2)
             if nums[i] != i + 1:
                 return i + 1
         return n + 1
-Time Complexity: O(N)
+#Time Complexity: O(N)
 
- https://leetcode-cn.com/problems/first-missing-positive/solution/que-shi-de-di-yi-ge-zheng-shu-by-leetcode-solution/
+#https://leetcode-cn.com/problems/first-missing-positive/solution/que-shi-de-di-yi-ge-zheng-shu-by-leetcode-solution/

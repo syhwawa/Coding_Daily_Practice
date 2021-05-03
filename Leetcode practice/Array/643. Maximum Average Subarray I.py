@@ -1,4 +1,4 @@
-Given an array consisting of n integers, find the contiguous subarray of given length k that has the maximum average value. And you need to output the maximum average value.
+"""Given an array consisting of n integers, find the contiguous subarray of given length k that has the maximum average value. And you need to output the maximum average value.
 
 Example 1:
 
@@ -11,14 +11,15 @@ Note:
 
 1 <= k <= n <= 30,000.
 Elements of the given array will be in the range [-10,000, 10,000].
+"""
 
-```Python
 class Solution:
-    def findMaxAverage(self, nums: List[int], k: int) -> float:
+    def findMaxAverage(self, nums, k):
         total = sum(nums[:k])
         res = [total]
         for i in range(k, len(nums)):
             total = total + nums[i] - nums[i - k]
             res.append(total)
         return max(res) / k
-```
+
+print(Solution().findMaxAverage([1,12,-5,-6,50,3], k = 4))

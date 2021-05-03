@@ -1,9 +1,9 @@
+"""
 Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
 
 Follow up: Could you implement a solution using only O(1) extra space complexity and O(n) runtime complexity?
 
  
-
 Example 1:
 
 Input: nums = [3,0,1]
@@ -24,10 +24,10 @@ Example 4:
 Input: nums = [0]
 Output: 1
 Explanation: n = 1 since there is 1 number, so all numbers are in the range [0,1]. 1 is the missing number in the range since it does not appear in nums.
+"""
 
-```Python
 class Solution:
-    def missingNumber(self, nums: List[int]) -> int:
+    def missingNumber(self, nums):
         i = 0
         while i < len(nums):
             j = nums[i]
@@ -42,4 +42,4 @@ class Solution:
             
         return len(nums)
 
-```
+print(Solution().missingNumber([9,6,4,2,3,5,7,0,1]))

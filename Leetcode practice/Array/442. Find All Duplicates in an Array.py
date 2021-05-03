@@ -1,3 +1,4 @@
+"""
 Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
 
 Find all the elements that appear twice in this array.
@@ -10,19 +11,17 @@ Input:
 
 Output:
 [2,3]
+"""
+#暴力解法
 
-暴力解法
-```Python
 class Solution:
     def findDuplicates(self, nums: List[int]) -> List[int]:
         from collections import Counter
         c = Counter(nums)
         return [key for key, values in c.items() if values == 2]
 
-```
 
 
-```
 def findDuplicates(self, nums: List[int]) -> List[int]:
         res = []
         for i in range(len(nums)):
@@ -32,15 +31,13 @@ def findDuplicates(self, nums: List[int]) -> List[int]:
             nums[loc] = - nums[loc]
             
         return res
-```
-
-https://leetcode-cn.com/problems/find-all-duplicates-in-an-array/solution/fu-shu-suo-yin-hao-by-powcai/
-
-Space COmplexity = O(1)
-Time Complexity = O(n)
 
 
-```
+#https://leetcode-cn.com/problems/find-all-duplicates-in-an-array/solution/fu-shu-suo-yin-hao-by-powcai/
+
+#Space COmplexity = O(1)
+#Time Complexity = O(n)
+
 class Solution:
     def findDuplicates(self, nums: List[int]) -> List[int]:
         i = 0
@@ -56,5 +53,3 @@ class Solution:
             if nums[k] != k + 1:
                 res.append(nums[k])
         return res
-
-```

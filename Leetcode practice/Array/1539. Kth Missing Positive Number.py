@@ -1,3 +1,4 @@
+"""
 Given an array arr of positive integers sorted in a strictly increasing order, and an integer k.
 
 Find the kth positive integer that is missing from this array.
@@ -22,8 +23,7 @@ Constraints:
 1 <= k <= 1000
 arr[i] < arr[j] for 1 <= i < j <= arr.length
 
-
-```Python
+"""
 class Solution:
     def findKthPositive(self, arr: List[int], k: int) -> int:
         l, r = 0, len(arr)
@@ -34,10 +34,10 @@ class Solution:
             else:
                 r = m        
         return l + k
-```
-Time Complexity :O(logN)
 
-```Python
+#Time Complexity :O(logN)
+
+
 class Solution:
     def findKthPositive(self, arr: List[int], k: int) -> int:
         count = 0
@@ -46,4 +46,3 @@ class Solution:
                 count += 1
             if count == k:
                 return i
-  ```          
