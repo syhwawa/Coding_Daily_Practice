@@ -1,4 +1,4 @@
-Remove Element
+"""Remove Element
 Given an array nums and a value val, remove all instances of that value in-place and return the new length.
 
 Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
@@ -39,9 +39,9 @@ for (int i = 0; i < len; i++) {
 }
 
 Solution:
-
+"""
 class Solution:
-    def removeElement(self, nums: List[int], val: int) -> int:
+    def removeElement(self, nums, val):
         count = 0
         for i in range(len(nums)):
             if nums[i] != val:
@@ -49,4 +49,4 @@ class Solution:
                 count += 1
         return count        
 
-        
+print(Solution().removeElement([0,1,2,2,3,0,4,2], 2))
