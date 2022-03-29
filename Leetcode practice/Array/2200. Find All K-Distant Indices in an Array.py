@@ -29,11 +29,27 @@ def findKDistantIndices(nums, key, k):
     res = set()
     for idx in range(len(nums)):
         if nums[idx] == key:
-            for j in range(max(0, idx - k), min(idx + k + 1, len(nums))):
+            for j in range(max(0, idx - k), min(idx + k + 1, len(nums))): # firstly, I used the if statement to determine the boundary which exceed the time. The idea is to use two pointers. 
                 res.add(j)
     return list(res)
 
-nums = [3,4,9,1,3,9,5]
+"""
+Other solution:
+利用双指针，一个指向元素，另一个指向加入的右边界
+def findKDistantIndices(nums, key, k):
+        ans = []
+        flag = 0
+        for i in range(len(nums)):
+            if nums[i]==key:
+                left = max(flag,i-k)
+                right = min(len(nums),i+k+1)
+                for j in range(left,right):
+                    ans.append(j)
+                flag = max(flag,right)
+        return ans
+"""
+
+nums = [3,4,9,1,3,4,5,9,5]
 key = 9
 k = 1
 print(findKDistantIndices(nums, key, k))
